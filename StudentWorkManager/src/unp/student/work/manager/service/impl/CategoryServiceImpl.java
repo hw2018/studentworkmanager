@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
+import unp.student.work.manager.dao.CategoryDao;
 import unp.student.work.manager.model.Category;
 import unp.student.work.manager.service.CategoryService;
 
@@ -15,16 +16,11 @@ import unp.student.work.manager.service.CategoryService;
 public class CategoryServiceImpl implements CategoryService {
 
 	@Resource
-	 private SessionFactory sessionFactory;
-	
-	 protected Session getSession() {  
-	        //从当前线程获取session，如果没有则创建一个新的session  
-	        return sessionFactory.getCurrentSession();  
-	    } 
+	 private CategoryDao categoryDao;
 	@Override
 	public void save(Category category) {
 		// TODO Auto-generated method stub
-       getSession().save(category);
+       categoryDao.save(category);
 	}
 
 }

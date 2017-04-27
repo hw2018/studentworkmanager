@@ -50,8 +50,7 @@
 			Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
 	 -->
 	 <context:annotation-config />
-	 <context:component-scan base-package="unp.student.work.manager.controller"/>
-	 <context:component-scan base-package="unp.student.work.manager.service.impl"/>
+	 <context:component-scan base-package="unp.student.work.manager.."/>
 	 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">  
    			 <property name="driverClass" value="com.mysql.jdbc.Driver" />  
    			 <property name="jdbcUrl" value="jdbc:mysql://localhost/studentworkmanager" />  

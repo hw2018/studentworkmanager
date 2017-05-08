@@ -4,11 +4,25 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">  
       
     <struts>  
-        <package name="/" extends="struts-default">  
-            <!-- category_update.actiocan： 访问update方法 -->  
-            <action name="category_*" class="categoryAction" method="{1}">  
-                <result name="index">/index.jsp</result>  
+        <package name="/lateinfo" extends="struts-default">  
+        
+            <action name="*_lateinfo" class="lateinfoAction" method="{1}">  
+                <result name="show">/work/late/late_list.jsp</result>  
+                <result name="update">/work/late/late_update.jsp</result>  
+                <result name="info">/work/late/late_info.jsp</result> 
+                <result name="infosuccess" type="redirect">lateinfo/info_lateinfo.action</result>
+                <result name="success" type="redirect">lateinfo/show_lateinfo.action</result> 
+                <result name="error">/error.jsp</result>
             </action>  
         </package>  
       
+      <package name="user" namespace="/user" extends="struts-default">
+		<!-- 使用通配符简化配置 -->
+		<action name="*User" class="userAction"
+			method="{1}">
+			<result name="success" >/index.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+	</package>
     </struts>  

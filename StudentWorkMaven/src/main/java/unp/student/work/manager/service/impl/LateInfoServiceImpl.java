@@ -42,6 +42,7 @@ public class LateInfoServiceImpl implements LateInfoService {
 
 	public void add(late_info lateinfo,String id,String situation) {
 		// TODO Auto-generated method stub
+		//添加晚点信息时级联添加晚点具体信息记录
 		lateinfo.setPersonInfo(userDao.get(id));
 		String [] persons=situation.split(",");
 		lateinfo.setNum(persons.length);
@@ -113,6 +114,8 @@ public class LateInfoServiceImpl implements LateInfoService {
 
 	public void deleteinfo(int lateinfoid,int latepersonid) {
 		// TODO Auto-generated method stub
+		
+		//删除晚点具体信息时级联更新晚点信息
 		late_info late_info1=lateInfoDao.get(late_info.class, lateinfoid);
 		late_info1.setNum(late_info1.getNum()-1);
 		lateInfoDao.update(late_info1);
@@ -121,6 +124,8 @@ public class LateInfoServiceImpl implements LateInfoService {
 	}
 
 	public void addinfo(int lateinfoid,String studentid) {
+		
+		//添加晚点具体信息时级联更新晚点信息
 		late_info late_info1=lateInfoDao.get(late_info.class, lateinfoid);
 		late_info1.setNum(late_info1.getNum()+1);
 		lateInfoDao.update(late_info1);
@@ -136,6 +141,7 @@ public class LateInfoServiceImpl implements LateInfoService {
 
 	public void updateinfo(int latepersonid, String reason) {
 		// TODO Auto-generated method stub
+		
 		late_person late_person1=latepersonDao.get(late_person.class, latepersonid);
 		late_person1.setReason(reason);
 		late_person1.setStatus(0);
@@ -145,6 +151,7 @@ public class LateInfoServiceImpl implements LateInfoService {
 
 	public void dealinfo(int lateinfoid, int latepersonid) {
 		// TODO Auto-generated method stub
+		//处理晚点具体信息时级联更新晚点信息
 		late_info late_info1=lateInfoDao.get(late_info.class, lateinfoid);
 		late_info1.setNum(late_info1.getNum()-1);
 		lateInfoDao.update(late_info1);

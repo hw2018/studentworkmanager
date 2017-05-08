@@ -36,9 +36,9 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 	private Map<String, Object> session;
 	public late_info lateInfo=new late_info();
 	private int latepersonid;//晚点信息 id
-	private String reason;
+	private String reason;//申诉理由
 	private String studentid;
-	private String situation;
+	private String situation;//晚点缺勤人员学号
 	private String date;
 	private int pageno=1;
 	
@@ -101,7 +101,7 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 	}
 
 
-	public String add(){
+	public String add(){  //添加晚点信息
 		
 		String id=(String) session.get("user");
 		lateInfo.setTime(new Date(date));
@@ -109,34 +109,34 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 		return "success";
 	}
 	
-	public String delete(){
+	public String delete(){   //删除晚点信息
 		lateInfoService.delete(lateInfo);
 		return "success";
 	}
 
-	public String update(){
+	public String update(){  //更新晚点信息
 		lateInfoService.update(lateInfo,situation);
 		return "success";
 	}
 	
-	public String show(){
+	public String show(){  //查看晚点信息
 		
 		PageBean pageBean=lateInfoService.findByPage(pageno);
 		request.put("pageBean", pageBean);
 		return "show";
 	}
 
-	public String get(){
+	public String get(){  //获取晚点信息
 		lateInfo=lateInfoService.get(lateInfo.getId());
 		request.put("lateinfo", lateInfo);
 		return "update";
 	}
-	public String info(){
+	public String info(){   //查看晚点具体信息
 		lateInfo=lateInfoService.get(lateInfo.getId());
 		request.put("lateinfo", lateInfo);
 		return "info";
 	}
-	public String addinfo(){
+	public String addinfo(){  //增加缺勤人员
 		lateInfoService.addinfo(lateInfo.getId(), studentid);
 		lateInfo=lateInfoService.get(lateInfo.getId());
 		request.put("lateinfo", lateInfo);
@@ -144,7 +144,7 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 		return "infosuccess";
 		
 	}
-	public String deleteinfo(){
+	public String deleteinfo(){  //删除缺勤人员
 		lateInfoService.deleteinfo(lateInfo.getId(),latepersonid);
 		late_info late_info1=lateInfoService.get(lateInfo.getId());
 		
@@ -152,7 +152,7 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 		return "infosuccess";
 	}
 	
-	public String applyinfo(){
+	public String applyinfo(){  //添加缺勤申诉
 		
 		if(session.get("user").equals(studentid)){
 			lateInfoService.updateinfo(latepersonid, reason);
@@ -164,7 +164,7 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 		
 	}
 	
-	public String dealinfo(){
+	public String dealinfo(){  //处理缺勤申诉
 		
 		lateInfoService.dealinfo(lateInfo.getId(), latepersonid);
 		request.put("lateinfo", lateInfoService.get(lateInfo.getId()));

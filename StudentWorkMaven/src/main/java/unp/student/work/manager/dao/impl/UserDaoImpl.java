@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import unp.student.work.manager.dao.UserDao;
-import unp.student.work.manager.model.PersonInfo;
+import unp.student.work.manager.domain.PersonInfo;
 
 @Repository("userDao")
 public class UserDaoImpl implements UserDao {

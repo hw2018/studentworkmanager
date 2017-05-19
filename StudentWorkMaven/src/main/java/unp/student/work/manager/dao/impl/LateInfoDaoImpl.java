@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import unp.student.work.manager.dao.LateInfoDao;
-import unp.student.work.manager.model.late_info;
+import unp.student.work.manager.domain.late_info;
 
 @Repository("lateInfoDao")
 public class LateInfoDaoImpl  extends BaseDaoImpl<late_info> implements LateInfoDao{

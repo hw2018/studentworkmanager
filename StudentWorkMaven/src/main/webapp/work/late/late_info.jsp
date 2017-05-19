@@ -1,4 +1,4 @@
-<%@page import="unp.student.work.manager.model.late_info" %>
+<%@page import="unp.student.work.manager.domain.late_info" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -16,31 +16,26 @@
 	<h1 align="center">晚点信息</h1>
 	<table>
 		<tr>
-			<td>编号</td>
-			<td>缺勤人</td>
-			<td>缺勤原因</td>
-			<td>申诉状态</td>
+			<td>缺勤人学号</td>
+			<td>缺勤人姓名</td>
 		</tr>
 		<%-- jsp尽量不要调用service或者dao对象, 应该从request里取出对象 --%>
 		<tbody>
-	<c:forEach var="item" items="${lateinfo.late_persons}">
+	<c:forEach var="item" items="${pageBean.data}">
 	
 		<tr>
-			<td><a>${item.id }</a></td>
+			<td><a>${item.personInfo.studentid }</a></td>
 		 	<td><a>${item.personInfo.name }</a></td>
-			<td><a>${item.reason }</a></td>
 			
-			<td><a>${item.status }</a></td>
-			<td><a href="lateinfo/dealinfo_lateinfo.action?latepersonid=${item.id }&id=${lateinfo.id}"> 同意</a></td>
-			<td><a href="work/late/late_info_apply.jsp?latepersonid=${item.id }&studentid=${item.personInfo.studentid }&id=${lateinfo.id}"> 申诉</a></td>
-			<td><a href="lateinfo/deleteinfo_lateinfo.action?latepersonid=${item.id }&id=${lateinfo.id}"> 删除</a></td>
+			<td class="delete"><a name="delete" href="lateinfo/deleteinfo_lateinfo.action?latepersonid=${item.id }&id=${item.late_info.id}"> 删除</a></td>
 			
 		</tr>
 	</c:forEach>
 	</tbody>
 
 	</table>
-<a href="work/late/late_info_add.jsp?lateinfoid=${lateinfo.id}">新增</a>
+<a id="add" href="work/late/late_info_add.jsp?lateinfoid=${lateinfo.id}">新增</a>
+
 
 <br>
   <form name="PageForm" action="lateinfo/show_lateinfo.action" method="post">
@@ -60,7 +55,26 @@
 				  if(${pageBean.curPage}>=${pageBean.maxPage}){
 				 var nextbutton=document.getElementById('next');
 				 nextbutton.style.visibility="hidden";
-				  }				  
+				  }		
+				  
+				   
+				  var quanxian="${sessionScope.quanxian}";	 
+				 if(quanxian.charAt(3)!='1'){
+				  var add=document.getElementById('add');
+				  add.style.display="none";
+				  var delete1=document.getElementsByClassName('delete');
+				  for(var i=0;i<delete1.length;i++){
+				  delete1[i].style.display="none";
+				  }
+				  }		  
+				  
+				  var studentid="${sessionScope.user}";
+				  var persons=document.getElementsByName('studentid');
+				  for(var i=0;i<persons.length;i++){
+				  	if(persons[i].id!=studentid){
+				  	persons[i].style.visibility="hidden";
+				  	}
+				  }
 							/*function change(){
 				var serach=document.getElementById("search_method").value;
 				if(search=="2"){

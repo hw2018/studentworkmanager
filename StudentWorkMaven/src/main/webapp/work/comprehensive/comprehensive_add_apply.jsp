@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="unp.student.work.manager.domain.late_info" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/common/head.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -34,25 +32,21 @@
 </head>
 <body>
 	<div class="content-box-header">
+		<h3>综测申诉</h3>
 	</div>
 	<div class="content-box-content">
-		<form name="form1" action="lateinfo/update_lateinfo.action?id=${lateinfo.id }" method="post"
+		<form name="form1" action="comprehensive/addapply_comprehensive.action?cid=${record.id }&studentid=${record.personInfo.studentid }" method="post"
 			onSubmit="return checkNull()">
 			
-				晚点缺勤情况：
+				记录：
+				<p>${record.record }</p>
+				<br>
+			</p>
+				申诉理由：
 				<textarea class="text-input textarea" rows="16" cols="50"
-					name="situation" onKeyDown="textdown(event)"
-    onKeyUp="textup()" onfocus="if(value=='输入为学号,学号........如111111111,222222222'){value=''}"
-    onblur="if (value ==''){value='输入为学号,学号........如111111111,222222222'}">
-    <c:forEach var="item"  items="${lateinfo.late_persons }">
-    	${item.personInfo.studentid },
-    </c:forEach>
-    </textarea>
+					name="reason">${record.reason }</textarea>
 			</p>
-			<p>
-				 晚点时间：<p>Date: <input type="text" id="datepicker" name="date" value="${lateinfo.time }"></p>
-				
-			</p>
+			
 			<p>
 				<input class="button" type="submit" value="新增" /> <input
 					class="button" type="reset" value="取消" />

@@ -1,4 +1,4 @@
-package unp.student.work.manager.model;
+package unp.student.work.manager.domain;
 // default package
 
 
@@ -17,6 +17,8 @@ public class counsellor  implements java.io.Serializable {
      private Float score;
      private String college;
      private String term;
+     private Integer major;
+     private String grade;
 
 
     // Constructors
@@ -25,13 +27,23 @@ public class counsellor  implements java.io.Serializable {
     public counsellor() {
     }
 
+	/** minimal constructor */
+    public counsellor(String name, String college, String term, Integer major, String grade) {
+        this.name = name;
+        this.college = college;
+        this.term = term;
+        this.major = major;
+        this.grade = grade;
+    }
     
     /** full constructor */
-    public counsellor(String name, Float score, String college, String term) {
+    public counsellor(String name, Float score, String college, String term, Integer major, String grade) {
         this.name = name;
         this.score = score;
         this.college = college;
         this.term = term;
+        this.major = major;
+        this.grade = grade;
     }
 
    
@@ -75,6 +87,22 @@ public class counsellor  implements java.io.Serializable {
     
     public void setTerm(String term) {
         this.term = term;
+    }
+
+    public Integer getMajor() {
+        return this.major;
+    }
+    
+    public void setMajor(Integer major) {
+        this.major = major;
+    }
+
+    public String getGrade() {
+        return this.grade;
+    }
+    
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
    
 

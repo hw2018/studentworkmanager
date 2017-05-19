@@ -21,7 +21,7 @@ import javax.xml.registry.infomodel.User;
 import org.springframework.stereotype.Service;
 
 import unp.student.work.manager.dao.UserDao;
-import unp.student.work.manager.model.PersonInfo;
+import unp.student.work.manager.domain.PersonInfo;
 import unp.student.work.manager.service.UserService;
 
 @Service("userService")

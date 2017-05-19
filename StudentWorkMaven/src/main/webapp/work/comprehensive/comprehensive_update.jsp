@@ -36,21 +36,17 @@
 	<div class="content-box-header">
 	</div>
 	<div class="content-box-content">
-		<form name="form1" action="lateinfo/update_lateinfo.action?id=${lateinfo.id }" method="post"
+		<form name="form1" action="comprehensive/update_comprehensive.action?id=${comprehensiverecord.id}" method="post"
 			onSubmit="return checkNull()">
 			
-				晚点缺勤情况：
+				学生综测分：
+				<input type="text" name="score" value="${comprehensiverecord.score}"/>
+				<br>
+				综测原因:<br>
 				<textarea class="text-input textarea" rows="16" cols="50"
-					name="situation" onKeyDown="textdown(event)"
-    onKeyUp="textup()" onfocus="if(value=='输入为学号,学号........如111111111,222222222'){value=''}"
-    onblur="if (value ==''){value='输入为学号,学号........如111111111,222222222'}">
-    <c:forEach var="item"  items="${lateinfo.late_persons }">
-    	${item.personInfo.studentid },
-    </c:forEach>
-    </textarea>
+					name="record" ></textarea>
 			</p>
 			<p>
-				 晚点时间：<p>Date: <input type="text" id="datepicker" name="date" value="${lateinfo.time }"></p>
 				
 			</p>
 			<p>

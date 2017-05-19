@@ -15,17 +15,22 @@
 			MYSQL5.7
 		</property>
 		<mapping
-			resource="unp/student/work/manager/model/PersonInfo.hbm.xml" />
+			resource="unp/student/work/manager/domain/PersonInfo.hbm.xml" />
 		<mapping
-			resource="unp/student/work/manager/model/comprehensive_record.hbm.xml" />
+			resource="unp/student/work/manager/domain/late_info.hbm.xml" />
 		<mapping
-			resource="unp/student/work/manager/model/counsellor.hbm.xml" />
+			resource="unp/student/work/manager/domain/late_person.hbm.xml" />
 		<mapping
-			resource="unp/student/work/manager/model/late_info.hbm.xml" />
+			resource="unp/student/work/manager/domain/social_pratice.hbm.xml" />
 		<mapping
-			resource="unp/student/work/manager/model/late_person.hbm.xml" />
+			resource="unp/student/work/manager/domain/comprehensive_record.hbm.xml" />
 		<mapping
-			resource="unp/student/work/manager/model/social_pratice.hbm.xml" />
+			resource="unp/student/work/manager/domain/comprehensive.hbm.xml" />
+		<mapping
+			resource="unp/student/work/manager/domain/StudentQuanxian.hbm.xml" />
+		<mapping
+			resource="unp/student/work/manager/domain/counsellor.hbm.xml" />
+		<mapping resource="unp/student/work/manager/domain/student_counsellor.hbm.xml" />
 
 
 

@@ -10,8 +10,8 @@
                 <result name="show">/work/late/late_list.jsp</result>  
                 <result name="update">/work/late/late_update.jsp</result>  
                 <result name="info">/work/late/late_info.jsp</result> 
-                <result name="infosuccess" type="redirect">lateinfo/info_lateinfo.action</result>
-                <result name="success" type="redirect">lateinfo/show_lateinfo.action</result> 
+              
+                <result name="applyinfo">/work/late/late_apply_info.jsp</result>
                 <result name="error">/error.jsp</result>
             </action>  
         </package>  
@@ -25,4 +25,22 @@
 		</action>
 
 	</package>
+		<package name="comprehensive" namespace="/comprehensive" extends="struts-default">
+		
+			<action name="*_comprehensive" class="comprehensiveAction" method="{1}">
+				<result name="show">/work/comprehensive/comprehensive_list.jsp</result>
+				<result name="update">/work/comprehensive/comprehensive_update.jsp</result>
+				<result name="applyshow">/work/comprehensive/comprehensive_apply.jsp</result>
+				<result name="error">/error.jsp</result> 
+				<result name="record">/work/comprehensive/comprehensive_record.jsp</result> 
+				<result name="addapply">/work/comprehensive/comprehensive_add_apply.jsp</result>
+			</action>
+		</package>
+		<package name="counsellor" namespace="/counsellor" extends="struts-default">
+		
+			<action name="*_counsellor" class="counsellorAction" method="{1}">
+				<result name="select" >/work/counsellor/counsellor_select.jsp</result>
+				<result name="test" >/work/counsellor/counsellor_test.jsp</result>
+			</action>
+		</package>
     </struts>  

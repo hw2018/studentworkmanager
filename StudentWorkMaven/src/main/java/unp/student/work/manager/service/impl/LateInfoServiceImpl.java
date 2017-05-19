@@ -1,5 +1,6 @@
 package unp.student.work.manager.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,8 +16,8 @@ import org.springframework.stereotype.Service;
 import unp.student.work.manager.dao.LateInfoDao;
 import unp.student.work.manager.dao.LatePersonDao;
 import unp.student.work.manager.dao.UserDao;
-import unp.student.work.manager.model.late_info;
-import unp.student.work.manager.model.late_person;
+import unp.student.work.manager.domain.late_info;
+import unp.student.work.manager.domain.late_person;
 import unp.student.work.manager.service.LateInfoService;
 import unp.student.work.manager.utils.PageBean;
 
@@ -30,7 +31,7 @@ public class LateInfoServiceImpl implements LateInfoService {
 	@Resource
 	private LatePersonDao  latepersonDao;
 
-	public PageBean findByPage(int pageno) {
+	public PageBean findByPage(int pageno) {//晚点信息分页
 		// TODO Auto-generated method stub
 		
 		PageBean pageBean=new PageBean();
@@ -51,6 +52,7 @@ public class LateInfoServiceImpl implements LateInfoService {
 			late_person latePerson=new late_person();
 			latePerson.setPersonInfo(userDao.get(studentid));
 			latePerson.setLate_info(lateInfoDao.get(late_info.class, lid));
+			latePerson.setStatus(2);
 			latepersonDao.save(latePerson);
 		}
 	}
@@ -132,6 +134,7 @@ public class LateInfoServiceImpl implements LateInfoService {
 		late_person latePerson=new late_person();
 		latePerson.setLate_info(lateInfoDao.get(late_info.class, lateinfoid));
 		latePerson.setPersonInfo(userDao.get(studentid));
+		latePerson.setStatus(2);
 		latepersonDao.save(latePerson);
 		
 		// TODO Auto-generated method stub
@@ -162,4 +165,58 @@ public class LateInfoServiceImpl implements LateInfoService {
 		
 	}
 
+	
+	//分页显示info
+
+	public PageBean showInfo(int pageno,int lateinfoid) {
+		// TODO Auto-generated method stub
+		
+		List iList=latepersonDao.findPageByLateInfo(lateinfoid, pageno);
+		PageBean pageBean=new PageBean();
+		pageBean.setMaxRowCount((int)latepersonDao.findCountByLateInfo(lateinfoid));
+		pageBean.setMaxPage(((int)latepersonDao.findCountByLateInfo(lateinfoid)/10)+1);
+		pageBean.setCurPage(pageno);
+	
+		pageBean.setData(iList);
+		return pageBean;
+	}
+
+	
+	//根据学生查找该学生申诉总记录
+	public PageBean showapplyByStudent(String studentid, int pageno) {
+		// TODO Auto-generated method stub
+		List late_persons=latepersonDao.findPageByStudent(studentid, pageno);
+		PageBean pageBean=new PageBean();
+		pageBean.setMaxRowCount((int)latepersonDao.findCountByStudent(studentid));
+		pageBean.setMaxPage((int)(latepersonDao.findCountByStudent(studentid)/10)+1);
+		pageBean.setCurPage(pageno);
+	
+		pageBean.setData(late_persons);
+		return pageBean;
+	}
+
+	
+	//根据管理员查找该管理员被申诉总记录
+	public PageBean showapplyByManager(String studentid, int pageno) {
+		// TODO Auto-generated method stub
+		List late_persons=latepersonDao.findPageByManager(studentid, pageno);
+		PageBean pageBean=new PageBean();
+		pageBean.setMaxRowCount((int)latepersonDao.findCountByManager(studentid));
+		pageBean.setMaxPage((int)(latepersonDao.findCountByManager(studentid)/10)+1);
+		pageBean.setCurPage(pageno);
+	
+		pageBean.setData(late_persons);
+		return pageBean;
+	}
+
+	
+	//删除申诉
+	public void deleteapply(int latepersonid) {
+		// TODO Auto-generated method stub
+		late_person late_person=latepersonDao.get(late_person.class,latepersonid);
+		late_person.setReason("");
+		late_person.setStatus(2);
+		latepersonDao.update(late_person);
+		
+	}
 }

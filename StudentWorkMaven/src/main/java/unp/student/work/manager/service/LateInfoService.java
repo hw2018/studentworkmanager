@@ -3,7 +3,8 @@ package unp.student.work.manager.service;
 import java.util.List;
 
 
-import unp.student.work.manager.model.late_info;
+
+import unp.student.work.manager.domain.late_info;
 import unp.student.work.manager.utils.PageBean;
 
 public interface LateInfoService {
@@ -20,6 +21,12 @@ public interface LateInfoService {
 	//晚点具体信息 缺勤信息操作
 	void deleteinfo(int lateinfoid,int latepersonid);
 	void addinfo(int lateinfoid,String studentid);
+	
+	//晚点申诉操作
 	void updateinfo(int latepersonid,String reason );
 	void dealinfo(int lateinfoid,int latepersonid);
+	void deleteapply(int latepersonid);
+	PageBean showInfo(int pageno,int lateinfoid);
+	PageBean showapplyByStudent(String studentid,int pageno);
+	PageBean showapplyByManager(String studentid,int pageno);
 }

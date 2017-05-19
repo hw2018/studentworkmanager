@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import unp.student.work.manager.dao.LateInfoDao;
-import unp.student.work.manager.model.late_info;
+import unp.student.work.manager.domain.late_info;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations="classpath:beans.xml")
@@ -30,7 +30,6 @@ public class LateInfoDaoImplTest {
 
 	@Test
 	public void testFindCount() {
-		System.out.println(lateInfoDao.findCount());
 	}
 
 	@Test

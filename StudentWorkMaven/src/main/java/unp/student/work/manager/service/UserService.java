@@ -1,6 +1,6 @@
 package unp.student.work.manager.service;
 
-import unp.student.work.manager.model.PersonInfo;
+import unp.student.work.manager.domain.PersonInfo;
 
 public interface UserService {
 	

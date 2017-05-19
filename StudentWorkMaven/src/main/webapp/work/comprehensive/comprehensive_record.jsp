@@ -1,5 +1,5 @@
 <%@page import="unp.student.work.manager.utils.PageBean"%>
-<%@page import="unp.student.work.manager.domain.late_info" %>
+<%@page import="unp.student.work.manager.domain.comprehensive_record" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,41 +14,42 @@
 <%@ include file="/common/cssjs.inc"%>
 </head>
 <body>
-	<h1 align="center">晚点情况</h1>
+	<h1 align="center">综测记录</h1>
 	<table>
 		<tr>
-			<td>晚点编号</td>
-			<td>晚点缺勤人数</td>
-			<td>晚点时间</td>
-			<td>晚点负责人</td>
+			<td>综测编号</td>
+			<td>学号</td>
+			<td>姓名</td>
+			<td>记录</td>
+			<td>操作</td>
 		</tr>
 		<%-- jsp尽量不要调用service或者dao对象, 应该从request里取出对象 --%>
 		<tbody>
 	<c:forEach var="item" items="${pageBean.data}">
 	
 		<tr>
-			<td><a href="lateinfo/info_lateinfo.action?id=${item.id }">${item.id }</a></td>
-			<td><a href="lateinfo/info_lateinfo.action?id=${item.id }">${item.num }</a></td>
-			<td><a href="lateinfo/info_lateinfo.action?id=${item.id }">${item.time }</a></td>
+			<td><a href="comprehensive/applyinfo_comprehensive.action?studentid=${item.personInfo.studentid }">${item.id }</a></td>
+			<td><a href="comprehensive/applyinfo_comprehensive.action?studentid=${item.personInfo.studentid }">${item.personInfo.studentid }</a></td>
+			<td><a href="comprehensive/applyinfo_comprehensive.action?studentid=${item.personInfo.studentid }">${item.personInfo.name }</a></td>
 			
-			<td><a href="lateinfo/info_lateinfo.action?id=${item.id }">${item.personInfo.studentid }</a></td>
-			<td class="update"><a name="update" href="lateinfo/info_lateinfo.action?id=${item.id }"> 修改</a></td>
-			<td class="delete"><a name="delete" href="lateinfo/delete_lateinfo.action?id=${item.id }"> 删除</a></td>
+			<td><a href="comprehensive/applyinfo_comprehensive.action?studentid=${item.personInfo.studentid }">${item.record }</a></td>
+
+
+			<td class="delete"><a   href="comprehensive/deleterecord_comprehensive.action?cid=${item.id }&studentid=${item.personInfo.studentid }"> 删除</a></td>
 			
 		</tr>
 	</c:forEach>
 	</tbody>
 
 	</table>
-<a id="add" href="work/late/late_add.jsp">新增</a>
 <br>
-  <form name="PageForm" action="lateinfo/show_lateinfo.action" method="post">
-			<a id="last" name="pageNum" href="lateinfo/show_lateinfo.action?pageno=${pageBean.curPage-1 }">上一页</a>
+  <form name="PageForm" action="comprehensive/show_comprehensive.action" method="post">
+			<a id="last" name="pageNum" href="comprehensive/show_comprehensive.action?pageno=${pageBean.curPage-1 }">上一页</a>
 			<a href="#">${pageBean.curPage}......</a>
 			<a href="#">${pageBean.maxPage}</a>
-			<a id="next" name="pageNum" href="lateinfo/show_lateinfo.action?pageno=${pageBean.curPage+1 }">下一页</a>
+			<a id="next" name="pageNum" href="comprehensive/show_comprehensive.action?pageno=${pageBean.curPage+1 }">下一页</a>
 			去第<input type="text"  name="pageno"/>页
-			<input type="submit"  vlue="确定"/><br>
+			<input type="submit"  vlue="确定"/>
 			
 				<script type="text/javascript">
 				
@@ -61,20 +62,13 @@
 				 nextbutton.style.visibility="hidden";
 				  }		
 				  
-				  var quanxian="${sessionScope.quanxian}";				  
+				   var quanxian="${sessionScope.quanxian}";				  
 				 if(quanxian.charAt(3)!='1'){
-				  var add=document.getElementById('add');
-				  add.style.display="none";
 				  var delete1=document.getElementsByClassName('delete');
 				  for(var i=0;i<delete1.length;i++){
 				  delete1[i].style.display="none";
 				  }
-				  var update=document.getElementsByClassName('update');
-				    for(var i=0;i<delete1.length;i++){
-				  update[i].style.display="none";
-				  }
-				  }
-					  
+				 	  }
 							/*function change(){
 				var serach=document.getElementById("search_method").value;
 				if(search=="2"){

@@ -14,22 +14,34 @@ import java.util.Map;
 
 
 
+
+
+
+
+
+
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.annotations.Sort;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import unp.student.work.manager.model.late_info;
-import unp.student.work.manager.model.late_person;
+import unp.student.work.manager.domain.StudentQuanxian;
+import unp.student.work.manager.domain.late_info;
+import unp.student.work.manager.domain.late_person;
 import unp.student.work.manager.service.LateInfoService;
+import unp.student.work.manager.service.StudentQuanXianService;
 import unp.student.work.manager.utils.PageBean;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import javax.annotation.Resource;
+import javax.persistence.Id;
 
 @Controller("lateinfoAction")
+@Scope("prototype")
 public class LateInfoAction extends ActionSupport implements ModelDriven<late_info>,RequestAware,SessionAware{
 	
 	private Map<String, Object> request;
@@ -44,6 +56,9 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 	
 	
 	@Resource
+	private StudentQuanXianService studentQuanXianService;
+	
+	@Resource
 	private LateInfoService lateInfoService;
 	
 	
@@ -54,9 +69,7 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-
-	
+		
 	
 	public String getStudentid() {
 		return studentid;
@@ -104,25 +117,75 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 	public String add(){  //添加晚点信息
 		
 		String id=(String) session.get("user");
-		lateInfo.setTime(new Date(date));
-		lateInfoService.add(lateInfo,id,situation);
-		return "success";
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			return "error";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行添加操作
+				lateInfo.setTime(new Date(date));
+				lateInfoService.add(lateInfo,id,situation);
+				PageBean pageBean=lateInfoService.findByPage(pageno);
+				request.put("pageBean", pageBean);
+				return "show";
+			}else{
+				return "error";
+			}
+		}
+		
 	}
 	
 	public String delete(){   //删除晚点信息
-		lateInfoService.delete(lateInfo);
-		return "success";
+		String id=(String) session.get("user");
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			return "error";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行删除操作
+				lateInfoService.delete(lateInfo);
+				PageBean pageBean=lateInfoService.findByPage(pageno);
+				request.put("pageBean", pageBean);
+				return "show";
+			}else{
+				return "error";
+			}
+		}
+		
 	}
 
 	public String update(){  //更新晚点信息
-		lateInfoService.update(lateInfo,situation);
-		return "success";
+		
+		String id=(String) session.get("user");
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			return "error";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行添加操作
+				lateInfoService.update(lateInfo,situation);
+				PageBean pageBean=lateInfoService.findByPage(pageno);
+				request.put("pageBean", pageBean);
+				return "show";
+			}else{
+				return "error";
+			}
+		}
+		
 	}
 	
 	public String show(){  //查看晚点信息
 		
+		
 		PageBean pageBean=lateInfoService.findByPage(pageno);
 		request.put("pageBean", pageBean);
+		
 		return "show";
 	}
 
@@ -132,32 +195,71 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 		return "update";
 	}
 	public String info(){   //查看晚点具体信息
+		PageBean pageBean=lateInfoService.showInfo(pageno, lateInfo.getId());
 		lateInfo=lateInfoService.get(lateInfo.getId());
+		request.put("pageBean", pageBean);
 		request.put("lateinfo", lateInfo);
 		return "info";
 	}
 	public String addinfo(){  //增加缺勤人员
-		lateInfoService.addinfo(lateInfo.getId(), studentid);
-		lateInfo=lateInfoService.get(lateInfo.getId());
-		request.put("lateinfo", lateInfo);
-		//未传入lateinfo.lateperson
-		return "infosuccess";
+		
+		String id=(String) session.get("user");
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			return "error";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行添加操作
+				lateInfoService.addinfo(lateInfo.getId(), studentid);
+				//未传入lateinfo.lateperson
+				PageBean pageBean=lateInfoService.showInfo(pageno, lateInfo.getId());
+				lateInfo=lateInfoService.get(lateInfo.getId());
+				request.put("pageBean", pageBean);
+				request.put("lateinfo", lateInfo);
+				return "info";
+			}else{
+				return "error";
+			}
+		}
+		
+		
 		
 	}
 	public String deleteinfo(){  //删除缺勤人员
-		lateInfoService.deleteinfo(lateInfo.getId(),latepersonid);
-		late_info late_info1=lateInfoService.get(lateInfo.getId());
 		
-		request.put("lateinfo", lateInfoService.get(lateInfo.getId()));
-		return "infosuccess";
+		
+		String id=(String) session.get("user");
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			return "error";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行添加操作
+				lateInfoService.deleteinfo(lateInfo.getId(),latepersonid);
+				
+				PageBean pageBean=lateInfoService.showInfo(pageno, lateInfo.getId());
+				lateInfo=lateInfoService.get(lateInfo.getId());
+				request.put("pageBean", pageBean);
+				request.put("lateinfo", lateInfo);
+				return "info";
+			}else{
+				return "error";
+			}
+		}
+		
+		
 	}
 	
 	public String applyinfo(){  //添加缺勤申诉
 		
 		if(session.get("user").equals(studentid)){
 			lateInfoService.updateinfo(latepersonid, reason);
-			request.put("lateinfo", lateInfoService.get(lateInfo.getId()));
-			return "infosuccess";
+			request.put("pageBean",lateInfoService.showapplyByStudent(studentid, pageno) );
+			return "applyinfo";
 		}else{
 			return "error";
 		}
@@ -166,9 +268,54 @@ public class LateInfoAction extends ActionSupport implements ModelDriven<late_in
 	
 	public String dealinfo(){  //处理缺勤申诉
 		
-		lateInfoService.dealinfo(lateInfo.getId(), latepersonid);
-		request.put("lateinfo", lateInfoService.get(lateInfo.getId()));
-		return "infosuccess";
+		String id=(String) session.get("user");
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			return "error";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行添加操作
+				lateInfoService.dealinfo(lateInfo.getId(), latepersonid);
+				request.put("lateinfo", lateInfoService.get(lateInfo.getId()));
+				request.put("pageBean",lateInfoService.showapplyByManager(id, pageno) );
+				return "applyinfo";
+			}else{
+				return "error";
+			}
+		}
+		
+		
+	}
+	
+	public String showapply(){
+		
+		String id=(String) session.get("user");
+		//判断是否有晚点管理员权限
+		StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(id);
+		if(studentQuanxian==null){
+			request.put("pageBean",lateInfoService.showapplyByStudent(id, pageno) );
+			return "applyinfo";
+		}else{
+			char[] s=studentQuanxian.getQuanxian().toCharArray();
+			if(s[4]=='1'){
+				//有执行添加操作
+				request.put("pageBean",lateInfoService.showapplyByManager(id, pageno) );
+				return "applyinfo";
+			}else{
+				
+				request.put("pageBean",lateInfoService.showapplyByStudent(id, pageno) );
+				return "applyinfo";
+			}
+		}
+		
+	}
+	public String deleteapply(){//删除申诉
+		String id=(String) session.get("user");
+		lateInfoService.deleteapply(latepersonid);
+		request.put("pageBean",lateInfoService.showapplyByStudent(id, pageno) );
+		return "applyinfo";
 	}
 	public late_info getModel() {
 		// TODO Auto-generated method stub

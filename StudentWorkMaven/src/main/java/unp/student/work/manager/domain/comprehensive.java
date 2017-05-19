@@ -1,43 +1,48 @@
-package unp.student.work.manager.model;
+package unp.student.work.manager.domain;
 // default package
 
 
 
 /**
- * comprehensive_record entity. @author MyEclipse Persistence Tools
+ * comprehensive entity. @author MyEclipse Persistence Tools
  */
 
-public class comprehensive_record  implements java.io.Serializable {
+public class comprehensive  implements java.io.Serializable {
 
 
     // Fields    
 
      private Integer id;
      private PersonInfo personInfo;
-     private Integer addorsub;
-     private Float score;
      private String record;
-     private Float totalscore;
      private String reason;
      private Integer status;
+     private Float last;
+     private Float final_;
 
 
     // Constructors
 
     /** default constructor */
-    public comprehensive_record() {
+    public comprehensive() {
     }
 
+	/** minimal constructor */
+    public comprehensive(PersonInfo personInfo, String record, Float last, Float final_) {
+        this.personInfo = personInfo;
+        this.record = record;
+        this.last = last;
+        this.final_ = final_;
+    }
     
     /** full constructor */
-    public comprehensive_record(PersonInfo personInfo, Integer addorsub, Float score, String record, Float totalscore, String reason, Integer status) {
+    public comprehensive(PersonInfo personInfo, String record, String reason, Integer status, Float last, Float final_) {
         this.personInfo = personInfo;
-        this.addorsub = addorsub;
-        this.score = score;
         this.record = record;
-        this.totalscore = totalscore;
         this.reason = reason;
         this.status = status;
+        this.last = last;
+        this.final_ = final_;
     }
 
    
@@ -59,36 +64,12 @@ public class comprehensive_record  implements java.io.Serializable {
         this.personInfo = personInfo;
     }
 
-    public Integer getAddorsub() {
-        return this.addorsub;
-    }
-    
-    public void setAddorsub(Integer addorsub) {
-        this.addorsub = addorsub;
-    }
-
-    public Float getScore() {
-        return this.score;
-    }
-    
-    public void setScore(Float score) {
-        this.score = score;
-    }
-
     public String getRecord() {
         return this.record;
     }
     
     public void setRecord(String record) {
         this.record = record;
-    }
-
-    public Float getTotalscore() {
-        return this.totalscore;
-    }
-    
-    public void setTotalscore(Float totalscore) {
-        this.totalscore = totalscore;
     }
 
     public String getReason() {
@@ -105,6 +86,22 @@ public class comprehensive_record  implements java.io.Serializable {
     
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Float getLast() {
+        return this.last;
+    }
+    
+    public void setLast(Float last) {
+        this.last = last;
+    }
+
+    public Float getFinal_() {
+        return this.final_;
+    }
+    
+    public void setFinal_(Float final_) {
+        this.final_ = final_;
     }
    
 

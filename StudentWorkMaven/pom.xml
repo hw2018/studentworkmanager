@@ -116,16 +116,18 @@
     		<artifactId>c3p0</artifactId>
    			 <version>0.9.5.2</version>
 		</dependency>
+		<!-- 注解 -->
 		<dependency>
-    <groupId>javax.annotation</groupId>  <!-- 注解 -->
-    <artifactId>javax.annotation-api</artifactId>
-    <version>1.2</version>
-	</dependency>
-	<dependency><!-- java ee api -->
-    <groupId>javax</groupId>
-    <artifactId>javaee-api</artifactId>
-    <version>7.0</version>
-	</dependency>
+   			 <groupId>javax.annotation</groupId>  
+   			 <artifactId>javax.annotation-api</artifactId>
+   			 <version>1.2</version>
+		</dependency>
+		<!-- java ee api -->
+		<dependency>
+   				 <groupId>javax</groupId>
+  				  <artifactId>javaee-api</artifactId>
+   				 <version>7.0</version>
+		</dependency>
 	</dependencies>
 	
   <build>

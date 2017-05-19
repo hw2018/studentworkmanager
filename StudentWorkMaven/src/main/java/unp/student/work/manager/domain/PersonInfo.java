@@ -1,4 +1,4 @@
-package unp.student.work.manager.model;
+package unp.student.work.manager.domain;
 
 import java.util.Date;
 import java.util.HashSet;

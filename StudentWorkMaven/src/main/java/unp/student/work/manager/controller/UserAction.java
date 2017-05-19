@@ -1,8 +1,9 @@
 package unp.student.work.manager.controller;
 
 import javax.annotation.Resource;
-
 import javax.servlet.http.HttpSession;
+
+
 
 
 
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 
+import unp.student.work.manager.domain.StudentQuanxian;
+import unp.student.work.manager.service.StudentQuanXianService;
 import unp.student.work.manager.service.UserService;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -25,6 +28,9 @@ public class UserAction extends ActionSupport {
 	
 	@Resource
 	private UserService userService;
+	
+	@Resource
+	private StudentQuanXianService studentQuanXianService;
 	// String user;
 	public String login(){
 
@@ -34,6 +40,13 @@ public class UserAction extends ActionSupport {
 			ActionContext actionContext=ActionContext.getContext();
 			Map session=actionContext.getSession();
 			session.put("user", userName);
+			//权限加入session
+			StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(userName);
+			if(studentQuanxian==null){
+				session.put("quanxian", "000000");
+			}else{
+			session.put("quanxian", studentQuanxian.getQuanxian());
+			}
 			//HttpSession session=request.getSession();
 			//session.setAttribute("user", userName);
 			return "success";

@@ -9,14 +9,14 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import unp.student.work.manager.service.LateInfoService;
+import unp.student.work.manager.service.WorkLateInfoService;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations="classpath:beans.xml")
 public class LateInfoServiceImplTest {
 
 	@Resource
-	private LateInfoService lateInfoService;
+	private WorkLateInfoService lateInfoService;
 	@Test
 	public void testShowInfo() {
 		lateInfoService.showInfo(1, 2);

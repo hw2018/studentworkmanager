@@ -77,7 +77,11 @@
             <tx:method name="update*" propagation="REQUIRED"/>  
             <tx:method name="delete*" propagation="REQUIRED"/>  
             <tx:method name="get*" propagation="REQUIRED"/> 
-            <tx:method name="find*" propagation="REQUIRED"/> 
+            <tx:method name="check*" propagation="REQUIRED"/>
+			<tx:method name="modify*" propagation="REQUIRED"/>
+            <tx:method name="find*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="initialize*" propagation="REQUIRED"/> 
             <tx:method name="*" propagation="SUPPORTS"/>  
         </tx:attributes>  
     </tx:advice>  
@@ -85,7 +89,11 @@
 	<aop:config>  
     <!-- 配置哪些包的类要切入事务 -->  
     <aop:pointcut id="pointcut" expression="execution(* unp.student.work.manager.dao.impl.*.*(..))" />  
+    <aop:pointcut id="pointcut2" expression="execution(* unp.student.work.manager.dao.*.*(..))"/>
+    <aop:pointcut id="pointcut3" expression="execution(* unp.student.work.manager.service.*.*(..))"/>
     <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/><!-- 连接了<span style="font-family:Microsoft YaHei;">上</span>面的advice和上面的pointcut -->  
+    <aop:advisor advice-ref="advice" pointcut-ref="pointcut2"/>
+    <aop:advisor advice-ref="advice" pointcut-ref="pointcut3"/>
     <!-- aop:pointcut要写在aop:advisor上面，否则会报错 -->  
  	</aop:config> 
 	</beans>

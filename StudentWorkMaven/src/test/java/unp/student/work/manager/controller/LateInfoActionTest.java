@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class LateInfoActionTest {
 
 	@Resource
-	private LateInfoAction lateInfoAction;
+	private WorkLateInfoAction lateInfoAction;
 	@Test
 	public void testShow() {
 		lateInfoAction.show();

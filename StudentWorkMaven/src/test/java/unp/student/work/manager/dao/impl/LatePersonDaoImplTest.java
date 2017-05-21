@@ -12,7 +12,7 @@ import org.objectweb.asm.tree.IntInsnNode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import unp.student.work.manager.dao.LatePersonDao;
+import unp.student.work.manager.dao.WorkLatePersonDao;
 import unp.student.work.manager.domain.late_person;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
@@ -20,7 +20,7 @@ import unp.student.work.manager.domain.late_person;
 public class LatePersonDaoImplTest {
 
 	@Resource
-	private LatePersonDao latePersonDao;
+	private WorkLatePersonDao latePersonDao;
 	@Test
 	public void testFindPageByManager() {
 		List l=latePersonDao.findPageByManager("221400405", 1);
@@ -49,7 +49,7 @@ public class LatePersonDaoImplTest {
 	
 	@Test
 	public void testFindCountByLateInfo() {
-		System.out.println(latePersonDao.findCountByLateInfo(6, 1));
+		//System.out.println(latePersonDao.findCountByLateInfo(6, 1));
 		
 	}
 }

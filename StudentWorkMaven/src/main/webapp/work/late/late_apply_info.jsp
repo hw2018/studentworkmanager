@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/common/head.jsp"%>
+<%@ include file="../common/head.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -10,7 +10,7 @@
 <!--定义基准路径  -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@ include file="/common/cssjs.inc"%>
+<%@ include file="../common/cssjs.inc"%>
 </head>
 <body>
 	<h1 align="center">晚点申诉信息</h1>
@@ -30,10 +30,10 @@
 		 	<td><a>${item.personInfo.name }</a></td>
 			<td><a>${item.reason }</a></td>
 			
-			<td><a>${item.status }</a></td>
+			<td><a class="status" value="${item.status }">${item.status }</a></td>
 			<td class="deal"><a  name="deal" href="lateinfo/dealinfo_lateinfo.action?latepersonid=${item.id }&id=${item.late_info.id}"> 同意</a></td>
 			<td class="apply"><a id="${item.personInfo.studentid }" name="studentid" href="work/late/late_info_apply.jsp?latepersonid=${item.id }&studentid=${item.personInfo.studentid }&id=${item.late_info.id}"> 申诉</a></td>
-			<td class="delete"><a name="delete" href="lateinfo/deleteapply_lateinfo.action?latepersonid=${item.id }&id=${item.late_info.id}"> 删除申诉</a></td>
+			<td ><a name="delete" class="delete"  href="lateinfo/deleteapply_lateinfo.action?latepersonid=${item.id }&id=${item.late_info.id}"> 删除申诉</a></td>
 			
 		</tr>
 	</c:forEach>
@@ -81,13 +81,17 @@
 				  }	  
 				  }
 				  
-				  var studentid="${sessionScope.user}";
+				  var studentid="${sessionScope.studentid}";
 				  var persons=document.getElementsByName('studentid');
 				  for(var i=0;i<persons.length;i++){
 				  	if(persons[i].id!=studentid){
 				  	persons[i].style.visibility="hidden";
 				  	}
 				  }
+				  
+				 
+				  
+			
 							/*function change(){
 				var serach=document.getElementById("search_method").value;
 				if(search=="2"){

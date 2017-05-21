@@ -13,12 +13,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Resource
 	private SessionFactory sessionFactory;
-	
+
 	public PersonInfo get(String studentid) {
 		// TODO Auto-generated method stub
 		
 		return (PersonInfo)sessionFactory.getCurrentSession().get(PersonInfo.class, studentid);
 	}
+
 
 
 }

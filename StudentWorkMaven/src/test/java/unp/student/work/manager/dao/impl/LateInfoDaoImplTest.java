@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import unp.student.work.manager.dao.LateInfoDao;
+import unp.student.work.manager.dao.WorkLateInfoDao;
 import unp.student.work.manager.domain.late_info;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
@@ -19,7 +19,7 @@ import unp.student.work.manager.domain.late_info;
 public class LateInfoDaoImplTest {
 
 	@Resource
-	private LateInfoDao lateInfoDao=new LateInfoDaoImpl();
+	private WorkLateInfoDao lateInfoDao=new WorkLateInfoDaoImpl();
 	@Test
 	public void testFindByPage() {
 		List<late_info> list=(List<late_info>)lateInfoDao.findByPage(1);

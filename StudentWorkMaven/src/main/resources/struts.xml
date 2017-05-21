@@ -4,6 +4,8 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">  
       
     <struts>  
+    	<constant name="struts.devMode" value="true"></constant>
+    	<!-- 晚点管理部分 -->
         <package name="/lateinfo" extends="struts-default">  
         
             <action name="*_lateinfo" class="lateinfoAction" method="{1}">  
@@ -16,15 +18,8 @@
             </action>  
         </package>  
       
-      <package name="user" namespace="/user" extends="struts-default">
-		<!-- 使用通配符简化配置 -->
-		<action name="*User" class="userAction"
-			method="{1}">
-			<result name="success" >/index.jsp</result>
-			<result name="login">/login.jsp</result>
-		</action>
-
-	</package>
+  
+	<!-- 综测管理部分 -->
 		<package name="comprehensive" namespace="/comprehensive" extends="struts-default">
 		
 			<action name="*_comprehensive" class="comprehensiveAction" method="{1}">
@@ -36,6 +31,7 @@
 				<result name="addapply">/work/comprehensive/comprehensive_add_apply.jsp</result>
 			</action>
 		</package>
+		<!-- 辅导员考核部分 -->
 		<package name="counsellor" namespace="/counsellor" extends="struts-default">
 		
 			<action name="*_counsellor" class="counsellorAction" method="{1}">
@@ -43,4 +39,187 @@
 				<result name="test" >/work/counsellor/counsellor_test.jsp</result>
 			</action>
 		</package>
+		<!-- 后台学生权限部分 -->
+		<package name="studentquanxian" namespace="/studentquanxian" extends="json-default">
+		
+			<action name="*_studentquanxian" class="studentquanxianAction" method="{1}">
+				<result name="jsonMap" type="json">
+					<param name="root" >pageMap</param>
+				</result>
+				<result name="stream" type="stream">
+					<param name="inputName">inputStream</param>
+				</result>
+			</action>
+		</package>
+		<!-- 转发部分 -->
+		<package name="send" namespace="/send" extends="struts-default">
+		
+			<action name="*_*" class="sendAction">
+			 	<result name="send">/webmanager/{1}/{2}.jsp</result>
+			</action>
+		</package>
+		
+		
+		
+		 <package name="person" namespace="/person" extends="struts-default">    
+		
+		<!-- 权限拦截器 -->
+		<interceptors>
+			<interceptor name="authority" class="unp.student.work.manager.controller.PersonAuth">
+			</interceptor>
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="mystack" />
+		
+		<global-results>
+			<result name="error">/person/person_error.jsp</result>
+			<result name="success">/person/person_index.jsp</result>
+			<result name="failure">/person/person_login.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
+		
+		<!-- 个人信息部分 -->
+		<action name="modifyInfo" class="personInfoAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_info.jsp</result>
+        </action>
+        
+        
+        <!-- 邮件管理部分 -->
+        <action name="addMailAccount" class="personMailAccountAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_mail_list.jsp</result>
+        </action>
+        
+        <action name="deleteMailAccount" class="personMailAccountAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_mail_list.jsp</result>
+        </action>
+        
+        <action name="modifyMailAccount" class="personMailAccountAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_mail_list.jsp</result>
+        </action>
+        
+        <action name="sendMail" class="personMailAccountAction" method="send">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result name="success">/person/person/send_mail_success.jsp</result>
+            <result name="failure">/person/person/send_mail_failure.jsp</result>
+        </action>
+        
+        <!-- 网页收藏部分 -->
+        <action name="addPage" class="personFavoriteAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_favorite.jsp</result>
+        </action>
+        
+        <action name="deletePage" class="personFavoriteAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_favorite.jsp</result>
+        </action>
+        
+        <action name="modifyPage" class="personFavoriteAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_favorite.jsp</result>
+        </action>
+        
+        
+        
+        <!-- 生活账号部分 -->
+        <action name="addLifeAccount" class="personLifeAccountAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_life_account.jsp</result>
+        </action>
+        
+        <action name="deleteLifeAccount" class="personLifeAccountAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_life_account.jsp</result>
+        </action>
+        
+        <action name="modifyLifeAccount" class="personLifeAccountAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_life_account.jsp</result>
+        </action>
+        
+        
+        <!-- 通讯录部分 -->
+		<action name="addContacts" class="personContactsAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_contacts.jsp</result>
+        </action>
+        
+        <action name="deleteContacts" class="personContactsAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_contacts.jsp</result>
+        </action>
+        
+		<action name="modifyContacts" class="personContactsAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_contacts.jsp</result>
+        </action>
+        
+        
+        <!-- 日记部分 -->
+        <action name="addDiary" class="personDiaryAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_diary_list.jsp</result>
+        </action>
+        
+        <action name="deleteDiary" class="personDiaryAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_diary_list.jsp</result>
+        </action>
+		
+		<action name="modifyDiary" class="personDiaryAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_diary_list.jsp</result>
+        </action>
+
+		
+		<!-- 个人财务部分 -->
+		<action name="addFinance" class="personFinanceAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_finance.jsp</result>
+        </action>
+        
+        <action name="deleteFinance" class="personFinanceAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_finance.jsp</result>
+        </action>
+        
+        <action name="modifyFinance" class="personFinanceAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_finance.jsp</result>
+        </action>
+		
+		
+		<!-- 计划目标部分 -->
+		<action name="addPlan" class="personPlanAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_plan.jsp</result>
+        </action>
+        
+        <action name="deletePlan" class="personPlanAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_plan.jsp</result>
+        </action>
+        
+        <action name="modifyPlan" class="personPlanAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/person/person_plan.jsp</result>
+        </action>
+    </package>
+    
+    
+    
+    <package name="login" namespace="/" extends="struts-default">  <!-- 对于登陆界面的内容就不用设置拦截器，而是让用户直接访问 -->
+    	<!-- 登陆部分 -->
+		<action name="login">
+			<result>/login.jsp</result>
+		</action>
+		
+		<action name="userValidate" class="unp.student.work.manager.controller.PersonUserAction" method="userValidate"> <!-- 用于处理登陆请求 -->			
+			<result name="student">/student_index.jsp</result>
+			<result name="teacher">/teacher_index.jsp</result>
+			<result name="failure">/login.jsp</result>
+		</action>
+		
+		<action name="userExit" class="unp.student.work.manager.controller.PersonUserAction" method="userExit"> 	
+			<result name="success">/login.jsp</result>
+		</action>
+		
+		<action name="userRegister" class="unp.student.work.manager.controller.PersonUserAction" method="userRegister">		
+			<result name="success">/person/person_login.jsp</result>
+		</action>
+		
+		<!-- <action name="passwordModify" class="com.mybank.fund.controller.UserAction" method="passwordModify"> 用于处理登陆请求			
+			<result name="passwordmodify">/user/password_modify.jsp</result>
+		</action> -->
+    
+    </package>
     </struts>  

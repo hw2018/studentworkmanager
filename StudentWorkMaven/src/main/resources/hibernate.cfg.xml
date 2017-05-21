@@ -30,8 +30,26 @@
 			resource="unp/student/work/manager/domain/StudentQuanxian.hbm.xml" />
 		<mapping
 			resource="unp/student/work/manager/domain/counsellor.hbm.xml" />
-		<mapping resource="unp/student/work/manager/domain/student_counsellor.hbm.xml" />
+		<mapping
+			resource="unp/student/work/manager/domain/student_counsellor.hbm.xml" />
+		
+		
+		<!-- 个人管理部分 -->
+		<mapping class="unp.student.work.manager.domain.PersonPersonInfo"/>
 
+		<mapping class="unp.student.work.manager.domain.PersonFavorite"/>
+		
+		<mapping class="unp.student.work.manager.domain.PersonMailAccount"/>
+		
+		<mapping class="unp.student.work.manager.domain.PersonLifeAccount"/>
+		
+		<mapping class="unp.student.work.manager.domain.PersonContacts"/>
+		
+		<mapping class="unp.student.work.manager.domain.PersonDiary"/>
+		
+		<mapping class="unp.student.work.manager.domain.PersonFinance"/>
+		
+		<mapping class="unp.student.work.manager.domain.PersonPlan"/>
 
 
 	</session-factory>

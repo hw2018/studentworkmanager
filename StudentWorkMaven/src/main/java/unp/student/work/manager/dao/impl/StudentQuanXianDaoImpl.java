@@ -16,8 +16,21 @@ public class StudentQuanXianDaoImpl extends BaseDaoImpl<StudentQuanxian> impleme
 	public StudentQuanxian getByStudent(String studentid) {
 		// TODO Auto-generated method stub
 		String hql="from StudentQuanxian s where s.studentid=:studentid";
-		return (StudentQuanxian)getSession().createQuery(hql).setString("studentid", studentid).uniqueResult();
+		return (StudentQuanxian)getSession().createQuery(hql).setString("studentid",studentid).uniqueResult();
 	}
+
+	public List<StudentQuanxian> query(String studentid, int pageno, int size) {
+		String hql="from StudentQuanxian sq where sq.studentid like :studentid";
+		return getSession().createQuery(hql).setString("studentid", "%"+ studentid+"%")
+				.setFirstResult((pageno-1)*size).setMaxResults(size).list();
+	}
+
+	public void deleteByIds(String ids) {
+		// TODO Auto-generated method stub
+		String hql="delete from StudentQuanxian sq where sq.id in ("+ids+")";
+		getSession().createQuery(hql).executeUpdate();
+	}
+	
 
 	
 }

@@ -144,7 +144,7 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 		
 		pageMap.put("total", total);
 		
-		return "jsonMap";
+		return "jsonMap";//通过json传递数据
 	}
 
 	//保存学生权限

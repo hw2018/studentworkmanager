@@ -50,6 +50,12 @@
 		<mapping class="unp.student.work.manager.domain.PersonFinance"/>
 		
 		<mapping class="unp.student.work.manager.domain.PersonPlan"/>
+		
+		<!-- 宿舍部分 -->
+		
+				<mapping class="unp.student.work.manager.domain.DormInfo" />
+			<mapping class="unp.student.work.manager.domain.DormRecord" />	
+		
 
 
 	</session-factory>

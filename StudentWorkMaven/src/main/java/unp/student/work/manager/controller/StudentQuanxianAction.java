@@ -109,16 +109,20 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 		return "jsonMap";
 	}
 
+	//保存学生权限
 	public void save(){
 		
 		studentQuanXianService.save(studentQuanxian);
 	}
 	
+	//更新学生权限
 	public void update(){
 		
 		studentQuanXianService.update(studentQuanxian);
 	}
 	
+	
+	//删除学生权限
 	public String deleteByIds() {
 		studentQuanXianService.deleteByIds(ids);
 		inputStream = new ByteArrayInputStream("true".getBytes());

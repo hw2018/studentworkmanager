@@ -222,4 +222,34 @@
 		</action> -->
     
     </package>
+    
+    <!-- 宿舍部分 -->
+      <package name="infoManage" namespace="/dorm/infoManage" extends="struts-default" >
+			
+			
+			<action name="*Dorm" class="unp.student.work.manager.controller.DormInfoManageAction"
+				method="{1}">
+					<result name="update">/dorm/dorm/infoManage/dorm_update.jsp</result>
+					<result name="showDorms">/dorm/dorm/infoManage/dorm_list.jsp</result>
+					<result name="success" type="chain">showDorm</result>
+			</action>
+			<action name="*">
+			<result name="success">/dorm/dorm/infoManage/{1}.jsp</result>
+		</action>
+		</package>
+		
+		<package name="recordManage" namespace="/dorm/recordManage" extends="struts-default" >
+			
+			
+			<action name="*Record" class="unp.student.work.manager.controller.DormRecordManageAction"
+				method="{1}">
+					<result name="update">/dorm/dorm/recordManage/record_update.jsp</result>
+					<result name="showRecords">/dorm/dorm/recordManage/record_list.jsp</result>
+					<result name="success" type="chain">showRecord</result>
+			</action>
+			<action name="*">
+			<result name="success">/dorm/dorm/recordManage/{1}.jsp</result>
+		</action>
+		</package>
+		
     </struts>  

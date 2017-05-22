@@ -15,12 +15,6 @@
 				missingMessage:'请输入学号'
 			});	
 			
-			
-			$("input[name=quanxian]").validatebox({
-				required:true,
-				missingMessage:'权限不能为空'
-			});	
-			
 
 			//窗体弹出默认时禁用验证
 			$("#ff").form("disableValidation");
@@ -46,6 +40,7 @@
 				}
 			});
 		});
+		
 	</script>
   </head>
   
@@ -54,12 +49,29 @@
 	    <div>   
 	        <label for="studentid">学号:</label> <input type="text" name="studentid" />   
 	    </div>   
+	  
 	    <div>   
-	        <label for="quanxian">权限:</label> <input type="text" name="quanxian" />   
-	    </div> 
-	   
+	        <label for="班级管理权限">班级管理权限:</label>   
+	        	是<input type="radio" name="classes" value="1"  checked="checked"/>&nbsp;
+	        	否 <input type="radio" name="classes" value="0" />
+	    </div>  
+	    <div>   
+	        <label for="社团管理权限">社团管理权限:</label>   
+	        	是<input type="radio" name="group" value="1"  checked="checked"/>&nbsp;
+	        	否 <input type="radio" name="group" value="0" />
+	    </div>  
+	    <div>   
+	        <label for="晚点管理权限">晚点管理权限:</label>   
+	        	是<input type="radio" name="late" value="1"  checked="checked"/>&nbsp;
+	        	否 <input type="radio" name="late" value="0" />
+	    </div>  
+	      <div>   
+	        <label for="综测管理权限">综测管理权限:</label>   
+	        	是<input type="radio" name="comprehensive" value="1"  checked="checked" />&nbsp;
+	        	否 <input type="radio" name="comprehensive" value="0" />
+	    </div>  
 	    <div>
-	    	<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">更新</a>  
+	    	<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>  
 	    </div>  
 	</form>  	
   </body>

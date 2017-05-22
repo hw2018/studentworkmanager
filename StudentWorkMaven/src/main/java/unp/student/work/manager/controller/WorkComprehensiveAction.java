@@ -125,7 +125,7 @@ ModelDriven<comprehensive_record>,RequestAware,SessionAware {
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[2]=='1'){
 				//有执行添加操作
 			
 				 comprehensiveService.addRecord(comprehensive_record,record);
@@ -155,7 +155,7 @@ ModelDriven<comprehensive_record>,RequestAware,SessionAware {
 			return "applyshow";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[2]=='1'){
 				//有执行添加操作
 			
 				 PageBean pageBean=comprehensiveService.showapplyByManager(pageno);

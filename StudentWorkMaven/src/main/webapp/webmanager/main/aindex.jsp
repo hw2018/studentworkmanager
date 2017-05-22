@@ -64,11 +64,7 @@
 						<li><a href="#" title="send_product_query.action">教师权限管理</a>
 					</ul>
     			</div>   
-    			<div title="销售管理">
-    				<ul>
-						<li><a href="#" title="send_sale_sale.action">销售管理</a>
-					</ul>
-    			</div>   
+    			  
 			</div>   
 	    </div>   
 	    <div data-options="region:'center',title:'后台操作页面'" style="padding:1px;background:#eee;">

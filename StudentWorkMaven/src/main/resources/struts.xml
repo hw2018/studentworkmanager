@@ -252,4 +252,47 @@
 		</action>
 		</package>
 		
+		
+		
+		
+		<!-- 班级部分 -->
+		
+		
+         <package name="/" extends="struts-default">  
+            <!-- category_update.actiocan锛?璁块棶update鏂规硶 -->  
+            <action name="*_classPosition" class="classPositionAction" method="{1}">  
+			<result name="update">/class/position/update.jsp</result>
+			<result name="show">/class/position/list.jsp</result>
+			<result name="success" type="chain">showClassPosition</result>
+		</action>
+		
+		    <action name="*_classActivity" class="classActivityAction" method="{1}">  
+			<result name="update">/class/activity/update.jsp</result>
+			<result name="show">/class/activity/list.jsp</result>
+			<result name="success" type="chain">showClassActivity</result>
+		</action>
+		
+		 <action name="*_classChuqin" class="classChuqinAction" method="{1}">  
+			<result name="update">/class/chuqin/update.jsp</result>
+			<result name="show">/class/chuqin/list.jsp</result>
+			<result name="success" type="chain">showClassChuqin</result>
+		</action>
+		
+
+		
+		    <action name="*_classLeave" class="classLeaveAction" method="{1}">  
+			<result name="update">/class/leave/update.jsp</result>
+			<result name="show">/class/leave/list.jsp</result>
+			<result name="success" type="chain">showClassLeave</result>
+		</action>
+		
+		   <action name="*_classHomework" class="classHomeworkAction" method="{1}">  
+			<result name="update">/class/homework/update.jsp</result>
+			<result name="show">/class/homework/list.jsp</result>
+			<result name="success" type="chain">showClassHomework</result>
+		</action>
+		       </package> 
+		       
+		
+		
     </struts>  

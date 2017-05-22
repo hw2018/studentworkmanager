@@ -123,7 +123,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行添加操作
 				lateInfo.setTime(new Date(date));
 				lateInfoService.add(lateInfo,id,situation);
@@ -145,7 +145,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行删除操作
 				lateInfoService.delete(lateInfo);
 				PageBean pageBean=lateInfoService.findByPage(pageno);
@@ -167,7 +167,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行添加操作
 				lateInfoService.update(lateInfo,situation);
 				PageBean pageBean=lateInfoService.findByPage(pageno);
@@ -210,7 +210,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行添加操作
 				lateInfoService.addinfo(lateInfo.getId(), studentid);
 				//未传入lateinfo.lateperson
@@ -237,7 +237,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行添加操作
 				lateInfoService.deleteinfo(lateInfo.getId(),latepersonid);
 				
@@ -275,7 +275,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "error";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行添加操作
 				lateInfoService.dealinfo(lateInfo.getId(), latepersonid);
 				request.put("lateinfo", lateInfoService.get(lateInfo.getId()));
@@ -299,7 +299,7 @@ public class WorkLateInfoAction extends ActionSupport implements ModelDriven<lat
 			return "applyinfo";
 		}else{
 			char[] s=studentQuanxian.getQuanxian().toCharArray();
-			if(s[4]=='1'){
+			if(s[3]=='1'){
 				//有执行添加操作
 				request.put("pageBean",lateInfoService.showapplyByManager(id, pageno) );
 				return "applyinfo";

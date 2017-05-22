@@ -44,19 +44,23 @@
 
 				<ul id="main-nav">
 					<!-- Accordion Menu -->
-					<li><a href="#" class="nav-top-item current">晚点管理</a>
+					<li><a href="#" class="nav-top-item">晚点管理</a>
 								<ul>
 									<li><a href="lateinfo/show_lateinfo.action" target="dmMain">晚点信息</a></li>
 									<li><a href="lateinfo/showapply_lateinfo.action" target="dmMain">晚点申诉</a></li>
 								</ul>
 					</li>
-					<li><a href="#" class="nav-top-item current">综测管理</a>
+					<li><a href="#" class="nav-top-item">综测管理</a>
 								<ul>
 									<li><a href="comprehensive/show_comprehensive.action" target="dmMain">综测信息</a></li>
 									<li><a href="comprehensive/applyshow_comprehensive.action" target="dmMain">综测申诉</a></li>
 								</ul>
 					</li>
-					<li><a href="counsellor/get_counsellor.action" target="dmMain">辅导员评价</a></li>
+					<li><a href="#" class="nav-top-item">辅导员考核</a>
+						<ul>
+							<li><a href="counsellor/get_counsellor.action" target="dmMain">辅导员评价</a></li>
+						</ul>
+					</li>
 					
 					
 						

@@ -40,7 +40,45 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 	private InputStream inputStream;//返回删除结果
 	
 	
+	private String classes;
+	private String group;
+	private String late;
+	private String comprehensive;
 	
+	
+	
+	public String getClasses() {
+		return classes;
+	}
+
+	public void setClasses(String classes) {
+		this.classes = classes;
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
+	public String getLate() {
+		return late;
+	}
+
+	public void setLate(String late) {
+		this.late = late;
+	}
+
+	public String getComprehensive() {
+		return comprehensive;
+	}
+
+	public void setComprehensive(String comprehensive) {
+		this.comprehensive = comprehensive;
+	}
+
 	public String getIds() {
 		return ids;
 	}
@@ -111,13 +149,15 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 
 	//保存学生权限
 	public void save(){
-		
+		String quanxian=classes+group+late+comprehensive;
+		studentQuanxian.setQuanxian(quanxian);
 		studentQuanXianService.save(studentQuanxian);
 	}
 	
 	//更新学生权限
 	public void update(){
-		
+		String quanxian=classes+group+late+comprehensive;
+		studentQuanxian.setQuanxian(quanxian);
 		studentQuanXianService.update(studentQuanxian);
 	}
 	

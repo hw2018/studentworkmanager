@@ -55,8 +55,19 @@
 		
 				<mapping class="unp.student.work.manager.domain.DormInfo" />
 			<mapping class="unp.student.work.manager.domain.DormRecord" />	
+		<!-- 班级管理部分 -->
 		
+		<mapping class="unp.student.work.manager.domain.ClassPosition"/>
 
+<mapping class="unp.student.work.manager.domain.ClassHomework"/>
+
+<mapping class="unp.student.work.manager.domain.ClassActivity"/>
+
+<mapping class="unp.student.work.manager.domain.ClassLeave"/>
+
+<mapping class="unp.student.work.manager.domain.ClassChuqin"/>
+
+<mapping class="unp.student.work.manager.domain.PersonInfo"/>
 
 	</session-factory>
 

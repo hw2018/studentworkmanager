@@ -44,7 +44,7 @@ public class PersonUserAction extends ActionSupport
 			//权限加入session
 			StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(studentid);
 			if(studentQuanxian==null){
-				session.put("quanxian", "000000");
+				session.put("quanxian", "00000");
 			}else{
 			session.put("quanxian", studentQuanxian.getQuanxian());
 			}

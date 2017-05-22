@@ -59,7 +59,7 @@
 				  
 				   
 				  var quanxian="${sessionScope.quanxian}";	 
-				 if(quanxian.charAt(3)!='1'){
+				 if(quanxian.charAt(2)!='1'){
 				  var add=document.getElementById('add');
 				  add.style.display="none";
 				  var delete1=document.getElementsByClassName('delete');

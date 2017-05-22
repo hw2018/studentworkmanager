@@ -67,7 +67,7 @@
 				  }		
 				  
 				   var quanxian="${sessionScope.quanxian}";				  
-				 if(quanxian.charAt(4)!='1'){
+				 if(quanxian.charAt(3)!='1'){
 				  var deal=document.getElementsByClassName('deal');
 				  for(var i=0;i<deal.length;i++){
 				  deal[i].style.display="none";

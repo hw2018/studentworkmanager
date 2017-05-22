@@ -64,7 +64,7 @@
 				  
 				   
 				  var quanxian="${sessionScope.quanxian}";	 
-				 if(quanxian.charAt(3)!='1'){
+				 if(quanxian.charAt(2)!='1'){
 				
 				  var deal=document.getElementsByClassName('deal');
 				    for(var i=0;i<deal.length;i++){

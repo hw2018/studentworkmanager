@@ -60,7 +60,7 @@
 				  }		
 				  
 				   var quanxian="${sessionScope.quanxian}";				  
-				 if(quanxian.charAt(4)!='1'){
+				 if(quanxian.charAt(3)!='1'){
 				  var update=document.getElementsByClassName('update');
 				  for(var i=0;i<update.length;i++){
 				  update[i].style.display="none";

@@ -32,42 +32,46 @@
 			resource="unp/student/work/manager/domain/counsellor.hbm.xml" />
 		<mapping
 			resource="unp/student/work/manager/domain/student_counsellor.hbm.xml" />
-		
-		
+
+	<mapping resource="unp/student/work/manager/domain/teacher_quanxian.hbm.xml" />
 		<!-- 个人管理部分 -->
-		<mapping class="unp.student.work.manager.domain.PersonPersonInfo"/>
+		<mapping
+			class="unp.student.work.manager.domain.PersonPersonInfo" />
 
-		<mapping class="unp.student.work.manager.domain.PersonFavorite"/>
-		
-		<mapping class="unp.student.work.manager.domain.PersonMailAccount"/>
-		
-		<mapping class="unp.student.work.manager.domain.PersonLifeAccount"/>
-		
-		<mapping class="unp.student.work.manager.domain.PersonContacts"/>
-		
-		<mapping class="unp.student.work.manager.domain.PersonDiary"/>
-		
-		<mapping class="unp.student.work.manager.domain.PersonFinance"/>
-		
-		<mapping class="unp.student.work.manager.domain.PersonPlan"/>
-		
+		<mapping class="unp.student.work.manager.domain.PersonFavorite" />
+
+		<mapping
+			class="unp.student.work.manager.domain.PersonMailAccount" />
+
+		<mapping
+			class="unp.student.work.manager.domain.PersonLifeAccount" />
+
+		<mapping class="unp.student.work.manager.domain.PersonContacts" />
+
+		<mapping class="unp.student.work.manager.domain.PersonDiary" />
+
+		<mapping class="unp.student.work.manager.domain.PersonFinance" />
+
+		<mapping class="unp.student.work.manager.domain.PersonPlan" />
+
 		<!-- 宿舍部分 -->
-		
-				<mapping class="unp.student.work.manager.domain.DormInfo" />
-			<mapping class="unp.student.work.manager.domain.DormRecord" />	
+
+		<mapping class="unp.student.work.manager.domain.DormInfo" />
+		<mapping class="unp.student.work.manager.domain.DormRecord" />
 		<!-- 班级管理部分 -->
+
+		<mapping class="unp.student.work.manager.domain.ClassPosition" />
+
+		<mapping class="unp.student.work.manager.domain.ClassHomework" />
+
+		<mapping class="unp.student.work.manager.domain.ClassActivity" />
+
+		<mapping class="unp.student.work.manager.domain.ClassLeave" />
+
+		<mapping class="unp.student.work.manager.domain.ClassChuqin" />
+
+		<mapping class="unp.student.work.manager.domain.PersonInfo" />
 		
-		<mapping class="unp.student.work.manager.domain.ClassPosition"/>
-
-<mapping class="unp.student.work.manager.domain.ClassHomework"/>
-
-<mapping class="unp.student.work.manager.domain.ClassActivity"/>
-
-<mapping class="unp.student.work.manager.domain.ClassLeave"/>
-
-<mapping class="unp.student.work.manager.domain.ClassChuqin"/>
-
-<mapping class="unp.student.work.manager.domain.PersonInfo"/>
 
 	</session-factory>
 

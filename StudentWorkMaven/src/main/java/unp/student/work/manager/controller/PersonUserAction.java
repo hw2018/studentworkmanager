@@ -5,13 +5,16 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
 
+import unp.student.work.manager.dao.GroupStudentDao;
 import unp.student.work.manager.dao.PersonUserDao;
+import unp.student.work.manager.dao.impl.GroupStudentDaoImpl;
 import unp.student.work.manager.domain.PersonPersonInfo;
 import unp.student.work.manager.domain.PersonPersonInfoDto2;
 import unp.student.work.manager.domain.StudentQuanxian;
@@ -37,9 +40,18 @@ public class PersonUserAction extends ActionSupport
 	public String userValidate() throws Exception 
 	{
 		Map<String, Object> session = ActionContext.getContext().getSession();
+		GroupStudentDao userDao=new GroupStudentDaoImpl();
 		
 		if(personUserDao.checkStudent(studentid, password)) 
 		{
+			boolean flags=userDao.studentquanxian(studentid, password);
+				
+				if(flags){
+					session.put("qx", 1);
+				}
+				else{
+					session.put("qx", 0);
+				}
 			session.put("studentid",studentid);	//验证成功，把用户名放入session中
 			//权限加入session
 			StudentQuanxian studentQuanxian=studentQuanXianService.getByStduent(studentid);
@@ -53,6 +65,11 @@ public class PersonUserAction extends ActionSupport
 		}
 		else if(personUserDao.checkTeacher(studentid, password))
 		{
+			boolean flagt=userDao.teacherquanxian(studentid, password);
+			if(flagt){
+				session.put("qx", 2);
+				session.put("user", studentid);
+			}
 			session.put("studentid",studentid);	//验证成功，把用户名放入session中
 			session.put("error",0);
 			return "teacher";

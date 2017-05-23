@@ -89,6 +89,14 @@
 		<mapping class="unp.student.work.manager.domain.Lostandfound" />
 		<mapping class="unp.student.work.manager.domain.Diningroomcomplaints" />
 
+	<!-- 物品部分 -->
+			<mapping class="unp.student.work.manager.domain.Goodsinfomy"/>
+		<mapping class="unp.student.work.manager.domain.Goodsinfoall"/>
+		<mapping class="unp.student.work.manager.domain.Goodsrbpmy"/>
+		<mapping class="unp.student.work.manager.domain.Goodsrbpall"/>
 	</session-factory>
+	
+	
+
 
 </hibernate-configuration>

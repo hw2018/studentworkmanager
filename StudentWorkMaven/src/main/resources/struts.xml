@@ -263,19 +263,19 @@
             <action name="*_classPosition" class="classPositionAction" method="{1}">  
 			<result name="update">/class/position/update.jsp</result>
 			<result name="show">/class/position/list.jsp</result>
-			<result name="success" type="chain" >showClassPosition</result>
+			<result name="success" type="chain" >show_classPosition</result>
 		</action>
 		
 		    <action name="*_classActivity" class="classActivityAction" method="{1}">  
 			<result name="update">/class/activity/update.jsp</result>
 			<result name="show">/class/activity/list.jsp</result>
-			<result name="success" type="chain">showClassActivity</result>
+			<result name="success" type="chain">show_classActivity</result>
 		</action>
 		
 		 <action name="*_classChuqin" class="classChuqinAction" method="{1}">  
 			<result name="update">/class/chuqin/update.jsp</result>
 			<result name="show">/class/chuqin/list.jsp</result>
-			<result name="success" type="chain">showClassChuqin</result>
+			<result name="success" type="chain">show_classChuqin</result>
 		</action>
 		
 
@@ -283,13 +283,13 @@
 		    <action name="*_classLeave" class="classLeaveAction" method="{1}">  
 			<result name="update">/class/leave/update.jsp</result>
 			<result name="show">/class/leave/list.jsp</result>
-			<result name="success" type="chain">showClassLeave</result>
+			<result name="success" type="chain">show_classLeave</result>
 		</action>
 		
 		   <action name="*_classHomework" class="classHomeworkAction" method="{1}">  
 			<result name="update">/class/homework/update.jsp</result>
 			<result name="show">/class/homework/list.jsp</result>
-			<result name="success" type="chain">showClassHomework</result>
+			<result name="success" type="chain">show_classHomework</result>
 		</action>
 		       </package>
 		       
@@ -454,6 +454,41 @@
 		</action>
 	</package>
 	
+	<!-- 物品部分 -->
+		<package name="goods" namespace="/goods" extends="struts-default">
+		
+		<!-- 买家中心部分 -->
+		
+		  <action name="searchgoodsinfo" class="goodsInfoallAction" method="search">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_infosearch.jsp</result>
+        </action>
+        
+        <action name="addgoodsrbp" class="goodsrbpmyAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_rbpmy.jsp</result>
+        </action>
+        
+        <action name="deletegoodsrbp" class="goodsrbpmyAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_rbpmy.jsp</result>
+        </action>
+        	 
+        <action name="modifygoodsrbp" class="goodsrbpmyAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_rbpmy.jsp</result>
+         </action>
+         
+		<!-- 卖家中心部分 -->
+		
+        <action name="addgoodsinfo" class="goodsInfomyAction" method="add">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_infomy.jsp</result>
+        </action>
+        
+        <action name="deletegoodsinfo" class="goodsInfomyAction" method="delete">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_infomy.jsp</result>
+        </action>
+        	 
+        <action name="modifygoodsinfo" class="goodsInfomyAction" method="modify">  <!-- 这里的class指的是spring中的一个bean实例 -->
+            <result>/person/goods/goods_infomy.jsp</result>
+        </action>
+    </package>
     		       
 		
 		

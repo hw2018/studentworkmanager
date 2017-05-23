@@ -1,0 +1,89 @@
+1495378532149	Delete element
+1495378536125	Move file
+1495380563228	Delete element
+1495380894069	Delete element
+1495380920632	Rename type 'ComprehensiveAction'
+1495380930071	Rename type 'CounsellorAction'
+1495380940806	Rename type 'LateInfoAction'
+1495380961472	Rename type 'SendAction'
+1495380978537	Rename type 'ManagerSendAction'
+1495381002487	Rename type 'LatePersonDao'
+1495381022149	Rename type 'LateInfoDao'
+1495381035823	Rename type 'ComprehensiveDao'
+1495381044847	Rename type 'ComprehensiveRecordDao'
+1495381063206	Rename type 'CounsellorDao'
+1495381104354	Rename type 'StudentCounsellorDao'
+1495381133636	Rename type 'ComprehensiveDaoImpl'
+1495381237069	Rename type 'ComprehensiveRecordDaoImpl'
+1495381243520	Rename type 'CounsellorDaoImpl'
+1495381252991	Rename type 'LateInfoDaoImpl'
+1495381257905	Rename type 'LatePersonDaoImpl'
+1495381264500	Rename type 'StudentCounsellorDaoImpl'
+1495381270126	Rename type 'StudentQuanXianDaoImpl'
+1495381431077	Rename type 'LateInfoService'
+1495381440645	Rename type 'CounsellorService'
+1495381449945	Rename type 'ComprehensiveService'
+1495381473649	Delete element
+1495381673237	Copy file
+1495381677395	Delete element
+1495381740295	Copy folders
+1495381754707	Delete element
+1495381761002	Delete elements
+1495382361064	Copy folder
+1495382469721	Delete element
+1495382824822	Rename type 'StudentQuanXianServiceImpl'
+1495382835800	Rename type 'LateInfoServiceImpl'
+1495382843776	Rename type 'CounsellorServiceImpl'
+1495382854446	Rename type 'ComprehensiveServiceImpl'
+1495386356975	Rename type 'WorkStudentQuanXianServiceImpl'
+1495386389926	Rename type 'WorkStudentQuanXianDaoImpl'
+1495386406295	Rename type 'WorkStudentCounsellorDao'
+1495418682725	Delete element
+1495418684866	Delete element
+1495443247926	Delete element
+1495448506513	Delete element
+1495458476211	Delete element
+1495458798486	Delete element
+1495459469106	Move file
+1495459507287	Move compilation unit
+1495499524924	Rename type 'ActivityAction'
+1495499535175	Rename type 'AppplyActivityAction'
+1495499544786	Rename type 'HolidayAction'
+1495499552661	Delete element
+1495499560896	Rename type 'ScholarshipAction'
+1495499568040	Rename type 'SupportAction'
+1495499827781	Rename type 'SupportService'
+1495499842732	Rename type 'HolidayService'
+1495499853793	Rename type 'ScholarshipService'
+1495499875610	Rename type 'ActivityService'
+1495500176234	Rename type 'ActivityDao'
+1495500194033	Rename type 'HolidayDao'
+1495500214893	Rename type 'SupportDao'
+1495500233273	Rename type 'ScholarshipDao'
+1495500286929	Rename type 'ActivityDaoImpl'
+1495500322857	Rename type 'HolidayDaoImpl'
+1495500365314	Rename type 'ScholarshipDaoImpl'
+1495500408164	Rename type 'SupportDaoImpl'
+1495500428771	Rename type 'ActivityServiceImpl'
+1495500459416	Rename type 'HolidayServiceImpl'
+1495500553820	Rename type 'ScholarshipServiceImpl'
+1495500596981	Rename type 'SupportServiceImpl'
+1495502981146	Rename type 'LostandfoundDao'
+1495502990546	Rename type 'EquityprotectDao'
+1495503001683	Rename type 'DiningroomcomplaintsDao'
+1495503012752	Rename type 'EquityprotectDaoImpl'
+1495503020519	Rename type 'DiningroomcomplaintsDaoImpl'
+1495503028848	Rename type 'LostandfoundDaoImpl'
+1495503057793	Rename type 'EquityprotectService'
+1495503064716	Rename type 'DiningroomcomplaintsService'
+1495503071951	Rename type 'LostandfoundService'
+1495503115254	Rename type 'DiningroomcomplaintsServiceImpl'
+1495503125209	Rename type 'LostandfoundServiceImpl'
+1495503132914	Rename type 'EquityprotectServiceImpl'
+1495503355929	Rename type 'DiningroomcomplaintsAction'
+1495503365977	Rename type 'EquityprotectAction'
+1495503392887	Rename type 'LostandfoundAction'
+1495503929359	Move folder
+1495503934250	Move folder
+1495503936188	Move folder
+1495503940032	Delete element

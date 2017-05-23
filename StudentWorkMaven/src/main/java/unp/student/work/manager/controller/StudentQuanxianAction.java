@@ -33,11 +33,11 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 	private int page;
 	private int rows;
 	
-	private Map<String, Object> pageMap=null;//json·ÖÒ³ÐÅÏ¢
+	private Map<String, Object> pageMap=null;//jsonï¿½ï¿½Ò³ï¿½ï¿½Ï¢
 	
-	private String ids;//½ÓÊÜÉ¾³ýµÄidÁ¬½ÓµÄ×Ö·û´®
+	private String ids;//ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½Óµï¿½ï¿½Ö·ï¿½
 	
-	private InputStream inputStream;//·µ»ØÉ¾³ý½á¹û
+	private InputStream inputStream;//ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½
 	
 	
 	private String classes;
@@ -134,7 +134,7 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 		return studentQuanxian;
 	}
 	
-	//»ñÈ¡Ñ§ÉúÈ¨ÏÞÐÅÏ¢
+	//ï¿½ï¿½È¡Ñ§ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½Ï¢
 	public String query(){
 		pageMap=new HashMap<String, Object>();
 		List<StudentQuanxian> studentQuanxians=studentQuanXianService.query(studentQuanxian.getStudentid(), page, rows);
@@ -144,17 +144,17 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 		
 		pageMap.put("total", total);
 		
-		return "jsonMap";//Í¨¹ýjson´«µÝÊý¾Ý
+		return "jsonMap";//Í¨ï¿½ï¿½jsonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
-	//±£´æÑ§ÉúÈ¨ÏÞ
+	//ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½È¨ï¿½ï¿½
 	public void save(){
 		String quanxian=classes+group+late+comprehensive;
 		studentQuanxian.setQuanxian(quanxian);
 		studentQuanXianService.save(studentQuanxian);
 	}
 	
-	//¸üÐÂÑ§ÉúÈ¨ÏÞ
+	//ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½È¨ï¿½ï¿½
 	public void update(){
 		String quanxian=classes+group+late+comprehensive;
 		studentQuanxian.setQuanxian(quanxian);
@@ -162,10 +162,13 @@ public class StudentQuanxianAction extends ActionSupport implements ModelDriven<
 	}
 	
 	
-	//É¾³ýÑ§ÉúÈ¨ÏÞ
+	//É¾ï¿½ï¿½Ñ§ï¿½ï¿½È¨ï¿½ï¿½
 	public String deleteByIds() {
 		studentQuanXianService.deleteByIds(ids);
 		inputStream = new ByteArrayInputStream("true".getBytes());
 		return "stream";
 	}
 }
+
+
+//æµ‹è¯•èƒ½å¦ä¸Šä¼ æ›´æ–°

@@ -73,6 +73,13 @@
 		<mapping class="unp.student.work.manager.domain.PersonInfo" />
 		
 
+
+<!-- 申请部分 -->
+
+			<mapping class="unp.student.work.manager.domain.Activity" />			
+		<mapping class="unp.student.work.manager.domain.Holiday" />
+		<mapping class="unp.student.work.manager.domain.Scholarship" />
+		<mapping class="unp.student.work.manager.domain.Support" />		
 	</session-factory>
 
 </hibernate-configuration>

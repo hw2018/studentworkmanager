@@ -44,7 +44,7 @@
 					<li><a href="dorm/index.jsp" class="nav" target="_top">宿舍管理</a></li>
 					<li><a href="class/index.jsp" class="nav" target="_top">班级管理</a></li>
 					<li><a href="group/index.jsp" class="nav" target="_top">社团管理</a></li>
-					<li><a href="person/person/person_diary_list.jsp" class="nav" target="dmMain">申请管理</a></li>
+					<li><a href="apply/index.jsp" class="nav" target="_top">申请管理</a></li>
 					<li><a href="person/person/person_contacts.jsp" class="nav" target="dmMain">闲置物品</a></li>
 					<li><a href="work/work_index.jsp" class="nav" target="_top">工作管理</a></li>
 					<li><a href="person/person/person_plan.jsp" class="nav" target="dmMain">校园服务</a></li>

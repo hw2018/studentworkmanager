@@ -80,6 +80,15 @@
 		<mapping class="unp.student.work.manager.domain.Holiday" />
 		<mapping class="unp.student.work.manager.domain.Scholarship" />
 		<mapping class="unp.student.work.manager.domain.Support" />		
+		
+		
+<!-- 服务部分 -->
+
+
+		<mapping class="unp.student.work.manager.domain.Equityprotect" />				
+		<mapping class="unp.student.work.manager.domain.Lostandfound" />
+		<mapping class="unp.student.work.manager.domain.Diningroomcomplaints" />
+
 	</session-factory>
 
 </hibernate-configuration>

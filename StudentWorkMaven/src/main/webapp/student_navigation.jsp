@@ -47,7 +47,7 @@
 					<li><a href="apply/index.jsp" class="nav" target="_top">申请管理</a></li>
 					<li><a href="person/person/person_contacts.jsp" class="nav" target="dmMain">闲置物品</a></li>
 					<li><a href="work/work_index.jsp" class="nav" target="_top">工作管理</a></li>
-					<li><a href="person/person/person_plan.jsp" class="nav" target="dmMain">校园服务</a></li>
+					<li><a href="campus/index.jsp" class="nav" target="_top">校园服务</a></li>
 				</ul>
 				
 			</div>

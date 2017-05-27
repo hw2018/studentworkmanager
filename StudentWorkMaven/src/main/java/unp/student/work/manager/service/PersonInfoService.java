@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
+import unp.student.work.manager.dao.PersonUserDao;
 import unp.student.work.manager.domain.PersonPersonInfo;
 
 @Component
@@ -13,6 +14,8 @@ public class PersonInfoService  //在其他类中使用的时候SessionUtil的对象必须由Spr
 {
 	@Resource
 	private SessionFactory sessionFactory;
+	@Resource
+	private PersonUserDao personUserDao;
 	
 	public PersonPersonInfo getPersonInfo(String studentid) 
 	{  
@@ -24,10 +27,17 @@ public class PersonInfoService  //在其他类中使用的时候SessionUtil的对象必须由Spr
 		Session s = sessionFactory.getCurrentSession(); 
 		s.saveOrUpdate(personPersonInfo);  //如果此数据在数据库中已经存在，则update，否则save
 	}
-	
-	public void addUser(PersonPersonInfo personPersonInfo)
+
+	public boolean addUser(PersonPersonInfo personPersonInfo) throws Exception
 	{
 		Session s = sessionFactory.getCurrentSession(); 
-		s.save(personPersonInfo);
+		if(personUserDao.checkExist(personPersonInfo.getStudentid()))  //表示用户已经存在
+			return false;
+		else
+		{
+			s.save(personPersonInfo);
+			return true;
+		}
+			
 	}
 }

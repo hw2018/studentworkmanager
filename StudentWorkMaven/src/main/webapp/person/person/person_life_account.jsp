@@ -58,7 +58,7 @@ function cancel1()  //命名竟然不能是close，好像是保留字
 <!--带关闭按钮的div修改弹窗-->
 <div align="center" id="modify" style="display:none;font-height:20px;;color:dddcdc;position:fixed ;margin:auto;left:0px;right:0px;top:0px;bottom:0px;height:300px;width:500px;background-color:4d4c4c;z-index:3;border:thin solid green;"><br/>
 <br/>
-<form method="post" action="<%=basePath%>person/modifyLifeAccount">
+<form method="post" action="<%=basePath%>person/modifyLifeAccount.action">
 <lable style="line-height:30px;">ID：&#12288<input onfocus=this.blur() type="text" id = "modifyid" name="id" maxlength="50" size="50"/></lable><br/>  
 <lable style="line-height:30px;">主体：<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('主体不能为空!')" type="text" id = "modifybody" name="body" maxlength="50" size="50"/></lable><br/>  
 <lable style="line-height:30px;">账号：<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('账号不能为空!')" type="text" id = "modifyaccount" name="account" maxlength="100" size="50" /></lable><br/>
@@ -72,7 +72,7 @@ function cancel1()  //命名竟然不能是close，好像是保留字
 
 
 <h2 align="left">添加生活账号：</h2>
-<form name="form1" method="post" onsubmit="" action="<%=basePath%>person/addLifeAccount" style="padding:15px;border:thin dashed black;">
+<form name="form1" method="post" onsubmit="" action="<%=basePath%>person/addLifeAccount.action" style="padding:15px;border:thin dashed black;">
 <table><tr>
 <td>
 <div>账号主体：<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('主体不能为空!')" class="text-input medium-input" name="body" id="name1" type="text" maxlength="100" size="30" /></div><br/>

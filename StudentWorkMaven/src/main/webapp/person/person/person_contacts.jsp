@@ -57,7 +57,7 @@ function cancel1()  //命名竟然不能是close，好像是保留字
 <!--带关闭按钮的div修改弹窗-->
 <div align="center" id="modify" style="display:none;font-height:20px;;color:dddcdc;position:fixed ;margin:auto;left:0px;right:0px;top:0px;bottom:0px;height:300px;width:500px;background-color:4d4c4c;z-index:3;border:thin solid green;"><br/>
 <br/>
-<form method="post" action="<%=basePath%>person/modifyContacts">
+<form method="post" action="<%=basePath%>person/modifyContacts.action">
 <lable style="line-height:30px;">ID：&#12288&#12288&#12288<input onfocus=this.blur() type="text" id = "modifyid" name="id" maxlength="50" size="50"/></lable><br/>  
 <lable style="line-height:30px;">姓名：&#12288&#12288<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('姓名不能为空!')" type="text" id = "modifyname" name="name" maxlength="50" size="50"/></lable><br/>  
 <lable style="line-height:30px;">手机：&#12288&#12288<input type="text" id = "modifytel" name="tel" maxlength="11" size="50" /></lable><br/>
@@ -71,7 +71,7 @@ function cancel1()  //命名竟然不能是close，好像是保留字
 
 
 <h2 align="left">新建联系人：</h2>
-<form name="form1" method="post" action="<%=basePath%>person/addContacts"  style="padding:15px;border:thin dashed black;">
+<form name="form1" method="post" action="<%=basePath%>person/addContacts.action"  style="padding:15px;border:thin dashed black;">
 <div>姓名：<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('姓名不能为空!')" class="text-input medium-input" name="name" id="name" type="text" maxlength="50" size="20" />&#12288&#12288
 手&#12288&#12288机：<input onblur="if(this.value.replace(/[\d]/g,'')!='' || (this.value.length!=0 && this.value.length!=11))alert('手机号码不符合规范!')" class="text-input medium-input" name="tel" id ="tel" type="text" maxlength="11" size="20" /></div><br/>
 <div>固话：<input class="text-input medium-input" name="fixtel" id ="fixtel" type="text" maxlength="100" size="20" />&#12288&#12288

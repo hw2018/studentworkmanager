@@ -55,7 +55,7 @@ function cancel1()  //命名竟然不能是close，好像是保留字
 <!--带关闭按钮的div修改弹窗-->
 <div align="center" id="modify" style="display:none;font-height:20px;;color:dddcdc;position:fixed ;margin:auto;left:0px;right:0px;top:0px;bottom:0px;height:180px;width:500px;background-color:4d4c4c;z-index:3;border:thin solid green;"><br/>
 <br/>
-<form method="post" action="<%=basePath%>person/modifyPage">
+<form method="post" action="<%=basePath%>person/modifyPage.action">
 <lable style="line-height:30px;">ID：&#12288<input onfocus=this.blur() type="text" id = "modifyid" name="id" maxlength="50" size="50"/></lable><br/>  
 <lable style="line-height:30px;">名称：<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('网页名不能为空!')" type="text" id = "modifyname" name="name" maxlength="50" size="50"/></lable><br/>  
 <lable style="line-height:30px;">地址：<input onblur="if(this.value.replace(/[a-zA-Z\.]/g,'')!='')alert('地址不符合规范!')"  type="text" id = "modifyurl" name="url" maxlength="100" size="50" /></lable><br/><br/>
@@ -67,7 +67,7 @@ function cancel1()  //命名竟然不能是close，好像是保留字
 
 
 <h2 align="left">添加网页收藏：</h2>
-<form name="form1" method="post" action="<%=basePath%>person/addPage"  style="padding:15px;border:thin dashed black;">
+<form name="form1" method="post" action="<%=basePath%>person/addPage.action"  style="padding:15px;border:thin dashed black;">
 <div>网页名：&#12288<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('网页名不能为空!')" class="text-input medium-input" name="name" id="name" type="text" maxlength="50" size="50" />&#12288&#12288&#12288&#12288&#12288&#12288&#12288&#12288&#12288&#12288&#12288<input type="submit" value="添加"/>&#12288<input type="reset" value="取消"/></div><br/>
 <div>网页地址：<input onblur="if(this.value.replace(/[a-zA-Z\.]/g,'')!='' || this.value.replace(/^ +| +$/g,'')=='')alert('地址不符合规范!')" class="text-input medium-input" name="url" id ="url" type="text" maxlength="100" size="100" placeHolder="请不要添加http://协议头"/></div>
 </form>

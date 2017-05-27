@@ -14,9 +14,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">   <!--定义基准路径  -->
 
-<script type="text/javascript" src="person/resources/scripts/jquery.js"></script>
-<script type="text/javascript" src="person/resources/scripts/hDate.js"></script>
-<link href="person/resources/css/hDate.css" rel="stylesheet" />
+<link href="person/resources/css/datePicker.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="person/resources/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="person/resources/scripts/jquery.date_input.pack.js"></script> 
 
 <style type="text/css">
 td,th{
@@ -42,6 +42,14 @@ a{text-decoration:NONE;color:black;}
 
 </head>
 <body style="background-color:dee6f2">
+
+<script type="text/javascript">   <!-- 必须写在body中 -->
+$(function(){
+	$('#birthday').date_input();
+	})
+</script>
+
+
 <%!
 public PersonPersonInfo personPersonInfo = new PersonPersonInfo();
 %>
@@ -55,11 +63,11 @@ personPersonInfo = ((PersonInfoService)ctx.getBean("personInfoService")).getPers
 <br/><br/>
 <h1 align="center">修改个人信息表</h1><br/>
 
-<form name="info" method="post" action="person/modifyInfo">
+<form name="info" method="post" action="person/modifyInfo.action">
 <table align="center" style="table-layout:fixed">
 <tr><td width="120">学号：</td><td><input readonly="true" name="personPersonInfoDto.studentid" value="<%=personPersonInfo.getStudentid()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>											<td width="120">姓名：</td><td><input readonly="true" name="personPersonInfoDto.name" value="<%=personPersonInfo.getName()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>
 <tr><td width="120">性别：</td><td><input name="personPersonInfoDto.sex" value="<%=personPersonInfo.getSex()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>		<td width="120">民族：</td><td><input name="personPersonInfoDto.nation" value="<%=personPersonInfo.getNation()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>
-<tr><td width="120">籍贯：</td><td><input name="personPersonInfoDto.placeofbirth" value="<%=personPersonInfo.getPlaceofbirth()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>		<td width="120">出生年月：</td><td><input onclick="calendar.show({ id: this })" name="personPersonInfoDto.birthday" value="<%=personPersonInfo.getBirthday()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>
+<tr><td width="120">籍贯：</td><td><input name="personPersonInfoDto.placeofbirth" value="<%=personPersonInfo.getPlaceofbirth()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>		<td width="120">出生年月：</td><td><input onclick="calendar.show({ id: this })" name="personPersonInfoDto.birthday" id="birthday" value="<%=personPersonInfo.getBirthday()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>
 <tr><td width="120">年级：</td><td><input name="personPersonInfoDto.grade" value="<%=personPersonInfo.getGrade()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>		<td width="120">政治状态：</td><td><input name="personPersonInfoDto.politicalstatus" value="<%=personPersonInfo.getPoliticalstatus()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>
 <tr><td width="120">学院：</td><td><input name="personPersonInfoDto.college" value="<%=personPersonInfo.getCollege()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>		<td width="120">专业编号：</td><td><input name="personPersonInfoDto.majorid" value="<%=personPersonInfo.getMajorid()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>
 <tr><td width="120">手机：</td><td><input name="personPersonInfoDto.tel" value="<%=personPersonInfo.getTel()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td>		<td width="120">电子邮箱：</td><td><input name="personPersonInfoDto.email" value="<%=personPersonInfo.getEmail()%>" type="text" size="30" style="background-color: transparent;border:none;"/></td></tr>

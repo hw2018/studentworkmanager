@@ -23,12 +23,12 @@ a{color:black;font-size:15px;font-fimily:楷体;text-decoration:none;margin-left
 	</script>
 <link rel="stylesheet" href="person/resources/css/login.css">
 </head>	
-<body onload="error()" style="background-image:url(person/resources/images/bc.png);background-repeat:no-repeat;background-position:center;">
+<body onload="error()" style="z-index:1;background-image:url(person/resources/images/bc.png);background-repeat:no-repeat;background-position:center;">
 <%session.setAttribute("error",0);%>
 <br/><br/><br/><br/>
-<div align="center" style="margin-top:-20px;height:20%;background-image:url(person/resources/images/header.png);background-repeat:no-repeat;background-position:center;"></div>
+<div align="center" style="z-index:3;margin-top:-20px;height:20%;background-image:url(person/resources/images/header.png);background-repeat:no-repeat;background-position:center;"></div>
 <br/><br/>
-<div>
+<div style="z-index:3;">
 <table align="center">
   <tr>
   <td>
@@ -37,7 +37,7 @@ a{color:black;font-size:15px;font-fimily:楷体;text-decoration:none;margin-left
       <input type="text" name="studentid" placeholder="用户名"/>
       <input type="password" name="password" placeholder="密码"/>
       <input class="b" type="submit" style="font-size:20px;" value="登陆"/>
-      <a href="#">注册</a>
+      <a href="register.jsp">注册</a>
     </form>
   </div>   
   
@@ -51,7 +51,10 @@ a{color:black;font-size:15px;font-fimily:楷体;text-decoration:none;margin-left
 
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/>
-<p style="text-align:center;">Copyright &copy; 2017 UNP. All Rights Reserved.<br/>UNP小组 版权所有</p>
+<p style="text-align:center;">Copyright &copy; 2017 UNP. All Rights Reserved.<br/><br/>UNP小组 版权所有</p>
+
+
+<SCRIPT src="person/resources/scripts/canvas-nest.min.js" type="text/javascript" count="120" opacity="100" zindex="-1" color="0,0,255"></SCRIPT>
 
 </body>
 </html>
